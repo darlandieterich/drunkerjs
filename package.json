@@ -1,0 +1,23 @@
+{
+  "name": "drunkerjs",
+  "version": "1.0.0",
+  "description": "discover the effects of alcohol, see what it can do on your page.",
+  "main": "src/drunker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darlandieterich/drunkerjs.git"
+  },
+  "keywords": [
+    "drunker",
+    "alcohol"
+  ],
+  "author": "Darlan Dieterich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darlandieterich/drunkerjs/issues"
+  },
+  "homepage": "https://github.com/darlandieterich/drunkerjs#readme"
+}
