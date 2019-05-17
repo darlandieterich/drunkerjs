@@ -17,6 +17,9 @@ const Drunker = class Drunk {
 	// Effect runnaway the element
 	Runaway() {
 	}
+	//Shake effect
+	Shake() {
+	}
 	// Effect random
 	Auto() {
 	}
