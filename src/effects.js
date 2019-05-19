@@ -1,3 +1,4 @@
+
 class Effects {
     constructor(selector, effect) {
 		this.selector = selector;
@@ -12,14 +13,14 @@ class Effects {
 	// Disappear the element
 	Disappear () {
 	}
+    // Shake effect
+    Shake () {
+    }
 	// Effect of fall element
 	Fall () {
 	}
 	// Effect runnaway the element
 	Runaway () {
-	}
-	// Shake effect
-	Shake () {
 	}
 	// Delay effect
 	Delay () {

@@ -1,6 +1,6 @@
 var Drunker = class Drunk extends Effects {
 	constructor(selector, effect) {
-		super(selector, effect)	
+		super(selectElement(selector), effect)	
 	}
 };
 
