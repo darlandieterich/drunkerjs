@@ -1,30 +1,6 @@
-const Drunker = class Drunk {
-	constructor(element) {
-		this.element = element;
-	}
-	// Blurred effect
-	Blur() {
-	}
-	// Dizzy effect
-	Dizzy() {
-	}
-	// Disappear the element
-	Disappear() {
-	}
-	// Effect of fall element
-	Fall() {
-	}
-	// Effect runnaway the element
-	Runaway() {
-	}
-	// Shake effect
-	Shake() {
-	}
-	// Delay effect
-	Delay() {
-	}
-	// Effect random
-	Auto() {
+var Drunker = class Drunk extends Effects {
+	constructor(selector, effect) {
+		super(selector, effect)	
 	}
 };
 
