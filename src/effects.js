@@ -1,8 +1,7 @@
-
 class Effects {
     constructor(selector, effect) {
 		this.selector = selector;
-		this.effect   = effect;		
+		this.effect   = effect;
 	}
     // Blurred effect
 	Blur () {
@@ -29,3 +28,5 @@ class Effects {
 	Auto () {
 	}
 }
+
+module.exports = Effects;

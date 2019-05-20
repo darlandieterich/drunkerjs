@@ -1,18 +1,17 @@
-var Drunker = class Drunk extends Effects {
-	constructor(selector, effect) {
-		super(selectElement(selector), effect);
-		this.types = TypeEffects("Blur", "Dizzy", "Disappear", "Shake");		
-	}
+import Effects from "./effects.js";
 
-	TypeEffects () {
-		for( var i = 0; i < arguments.length; ++i ){
-			this[arguments[i]] = i;
-		}
-		return this;
+class Drunker extends Effects {
+	constructor(selector = "", effect = {}) {
+		super(selector, effect);
 	}
 
 	static GetTypes () {
-		return this.types;
+		return {
+			BLUR: 1, 
+			DIZZY: 2, 
+			DISAPPEAR: 3, 
+			SHAKE: 4
+		};
 	}
 };
 
