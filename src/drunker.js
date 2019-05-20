@@ -5,6 +5,10 @@ class Drunker extends Effects {
 		super(selector, effect);
 	}
 
+	Drunk(times = 0) {
+		
+	}
+
 	static GetTypes () {
 		return {
 			BLUR: 1, 
