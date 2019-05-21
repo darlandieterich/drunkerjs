@@ -21,7 +21,7 @@ _________________
     </div>
     <script src="../dist/drunker.js"></script>
     <script>
-        var Drunker = new Drunker('#value', Drunker.GetTypes().DIZZY);
+        var Drunker = new Drunker('#value', Drunker.DrunkerEffects.DIZZY);
         Drunker.Drunk();
     </script>
 </body>

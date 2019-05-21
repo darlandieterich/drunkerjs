@@ -9,9 +9,8 @@
     <div id="value" style="width:150px;height:150px;background-color:blue">the test</div>
     <script src="../dist/drunker.js"></script>
     <script>
-        console.log(Drunker.DrunkerEffects);
-        var d = new Drunker('#value', Drunker.DrunkerEffects);
-        d["Drunk"]();
+        var Drunker = new Drunker('#value', Drunker.DrunkerEffects.DIZZY);
+        Drunker.Drunk();
     </script>
 </body>
 </html>

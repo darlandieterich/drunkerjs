@@ -104,6 +104,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _effects = __webpack_require__(1);
 
 var _effects2 = _interopRequireDefault(_effects);
@@ -133,7 +135,7 @@ var Drunker = function (_Effects) {
 		value: function Drunk() {
 			var times = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-			alert('hii');
+			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this);
 		}
 	}]);
 
@@ -143,11 +145,11 @@ var Drunker = function (_Effects) {
 ;
 
 var DrunkerEffects = {
-	BLUR: 1,
-	DIZZY: 2,
-	DISAPPEAR: 3,
-	SHAKE: 4,
-	SPIN: 5
+	BLUR: "Blur",
+	DIZZY: "Dizzy",
+	DISAPPEAR: "Disappear",
+	SHAKE: "Shake",
+	SPIN: "Spin"
 };
 
 Drunker.DrunkerEffects = DrunkerEffects;
@@ -165,56 +167,76 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Effects = function () {
-			function Effects(selector, effect) {
-						_classCallCheck(this, Effects);
+				function Effects(selector, effect) {
+								_classCallCheck(this, Effects);
 
-						this.selector = selector;
-						this.effect = effect;
-			}
-			// Blurred effect
+								this.selector = selector;
+								this.effect = effect;
+				}
 
+				_createClass(Effects, [{
+								key: 'GetEffect',
+								value: function GetEffect() {
+												return this[this.effect]();
+								}
+								// Blurred effect
 
-			_createClass(Effects, [{
-						key: "Blur",
-						value: function Blur() {}
-						// Dizzy effect
+				}, {
+								key: 'Blur',
+								value: function Blur() {
+												console.log('Blur');
+								}
+								// Dizzy effect
 
-			}, {
-						key: "Dizzy",
-						value: function Dizzy() {}
-						// Disappear the element
+				}, {
+								key: 'Dizzy',
+								value: function Dizzy() {
+												console.log('Dizzy');
+								}
+								// Disappear the element
 
-			}, {
-						key: "Disappear",
-						value: function Disappear() {}
-						// Shake effect
+				}, {
+								key: 'Disappear',
+								value: function Disappear() {
+												console.log('Disappear');
+								}
+								// Shake effect
 
-			}, {
-						key: "Shake",
-						value: function Shake() {}
-						// Effect of fall element
+				}, {
+								key: 'Shake',
+								value: function Shake() {
+												console.log('Shake');
+								}
+								// Rotation effect
 
-			}, {
-						key: "Fall",
-						value: function Fall() {}
-						// Effect runnaway the element
+				}, {
+								key: 'Spin',
+								value: function Spin() {
+												console.log('Spin');
+								}
+								// Effect of fall element
 
-			}, {
-						key: "Runaway",
-						value: function Runaway() {}
-						// Delay effect
+				}, {
+								key: 'Fall',
+								value: function Fall() {}
+								// Effect runnaway the element
 
-			}, {
-						key: "Delay",
-						value: function Delay() {}
-						// Effect random
+				}, {
+								key: 'Runaway',
+								value: function Runaway() {}
+								// Delay effect
 
-			}, {
-						key: "Auto",
-						value: function Auto() {}
-			}]);
+				}, {
+								key: 'Delay',
+								value: function Delay() {}
+								// Effect random
 
-			return Effects;
+				}, {
+								key: 'Auto',
+								value: function Auto() {}
+				}]);
+
+				return Effects;
 }();
 
 module.exports = Effects;
