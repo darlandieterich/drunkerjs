@@ -128,15 +128,12 @@ var Drunker = function (_Effects) {
 		return _possibleConstructorReturn(this, (Drunker.__proto__ || Object.getPrototypeOf(Drunker)).call(this, selector, effect));
 	}
 
-	_createClass(Drunker, null, [{
-		key: "GetTypes",
-		value: function GetTypes() {
-			return {
-				BLUR: 1,
-				DIZZY: 2,
-				DISAPPEAR: 3,
-				SHAKE: 4
-			};
+	_createClass(Drunker, [{
+		key: "Drunk",
+		value: function Drunk() {
+			var times = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+			alert('hii');
 		}
 	}]);
 
@@ -145,6 +142,15 @@ var Drunker = function (_Effects) {
 
 ;
 
+var DrunkerEffects = {
+	BLUR: 1,
+	DIZZY: 2,
+	DISAPPEAR: 3,
+	SHAKE: 4,
+	SPIN: 5
+};
+
+Drunker.DrunkerEffects = DrunkerEffects;
 module.exports = Drunker;
 
 /***/ }),

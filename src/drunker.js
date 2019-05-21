@@ -6,17 +6,17 @@ class Drunker extends Effects {
 	}
 
 	Drunk(times = 0) {
-		
-	}
-
-	static GetTypes () {
-		return {
-			BLUR: 1, 
-			DIZZY: 2, 
-			DISAPPEAR: 3, 
-			SHAKE: 4
-		};
+		super.GetEffect();
 	}
 };
 
+const DrunkerEffects = {
+	BLUR: 1, 
+	DIZZY: 2, 
+	DISAPPEAR: 3, 
+	SHAKE: 4,
+	SPIN: 5
+};
+
+Drunker.DrunkerEffects = DrunkerEffects;
 module.exports = Drunker;
