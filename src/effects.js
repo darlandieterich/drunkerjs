@@ -1,32 +1,40 @@
-class Effects {
+import Helper from "./helper.js";
+
+class Effects{
     constructor(selector, effect) {
-		this.selector = selector;
-		this.effect   = effect;
+		this.element = new Helper().selectElement(selector);
+		this.effect   = effect;				
     }
     GetEffect() {
-        return this[this.effect]()
-    }
+        return this[`_${this.effect}`]()
+	}
+	StopEffect() {
+		console.log('Stop Effect');
+	}
     // Blurred effect
-	Blur () {
+	_Blur () {
         console.log('Blur');
 	}
 	// Dizzy effect
-	Dizzy () {
+	_Dizzy () {
+		console.log(this.element);
         console.log('Dizzy');
 	}
 	// Disappear the element
-	Disappear () {
+	_Disappear () {
         console.log('Disappear');
 	}
     // Shake effect
-    Shake () {
+    _Shake () {
         console.log('Shake');
     }
     // Rotation effect
-    Spin () {
+    _Spin () {
         console.log('Spin');
     }
-	// Effect of fall element
+		
+	// Develop this after
+	/* // Effect of fall element
 	Fall () {
 	}
 	// Effect runnaway the element
@@ -37,7 +45,7 @@ class Effects {
 	}
 	// Effect random
 	Auto () {
-	}
+	} */
 }
 
 module.exports = Effects;

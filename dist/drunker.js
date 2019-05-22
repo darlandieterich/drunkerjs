@@ -137,6 +137,11 @@ var Drunker = function (_Effects) {
 
 			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this);
 		}
+	}, {
+		key: "StopDrunk",
+		value: function StopDrunk() {
+			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "StopEffect", this).call(this);
+		}
 	}]);
 
 	return Drunker;
@@ -164,82 +169,139 @@ module.exports = Drunker;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _helper = __webpack_require__(2);
+
+var _helper2 = _interopRequireDefault(_helper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Effects = function () {
 				function Effects(selector, effect) {
 								_classCallCheck(this, Effects);
 
-								this.selector = selector;
+								this.element = new _helper2.default().selectElement(selector);
 								this.effect = effect;
 				}
 
 				_createClass(Effects, [{
 								key: 'GetEffect',
 								value: function GetEffect() {
-												return this[this.effect]();
+												return this['_' + this.effect]();
+								}
+				}, {
+								key: 'StopEffect',
+								value: function StopEffect() {
+												console.log('Stop Effect');
 								}
 								// Blurred effect
 
 				}, {
-								key: 'Blur',
-								value: function Blur() {
+								key: '_Blur',
+								value: function _Blur() {
 												console.log('Blur');
 								}
 								// Dizzy effect
 
 				}, {
-								key: 'Dizzy',
-								value: function Dizzy() {
+								key: '_Dizzy',
+								value: function _Dizzy() {
+												console.log(this.element);
 												console.log('Dizzy');
 								}
 								// Disappear the element
 
 				}, {
-								key: 'Disappear',
-								value: function Disappear() {
+								key: '_Disappear',
+								value: function _Disappear() {
 												console.log('Disappear');
 								}
 								// Shake effect
 
 				}, {
-								key: 'Shake',
-								value: function Shake() {
+								key: '_Shake',
+								value: function _Shake() {
 												console.log('Shake');
 								}
 								// Rotation effect
 
 				}, {
-								key: 'Spin',
-								value: function Spin() {
+								key: '_Spin',
+								value: function _Spin() {
 												console.log('Spin');
 								}
-								// Effect of fall element
 
-				}, {
-								key: 'Fall',
-								value: function Fall() {}
-								// Effect runnaway the element
+								// Develop this after
+								/* // Effect of fall element
+        Fall () {
+        }
+        // Effect runnaway the element
+        Runaway () {
+        }
+        // Delay effect
+        Delay () {
+        }
+        // Effect random
+        Auto () {
+        } */
 
-				}, {
-								key: 'Runaway',
-								value: function Runaway() {}
-								// Delay effect
-
-				}, {
-								key: 'Delay',
-								value: function Delay() {}
-								// Effect random
-
-				}, {
-								key: 'Auto',
-								value: function Auto() {}
 				}]);
 
 				return Effects;
 }();
 
 module.exports = Effects;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Helper = function () {
+    function Helper() {
+        _classCallCheck(this, Helper);
+    }
+
+    _createClass(Helper, [{
+        key: "addCSSRule",
+        value: function addCSSRule(rule, name) {
+            if (checkExistCSSRule(name) == null) {
+                document.styleSheets[0].insertRule(rule);
+            }
+        }
+    }, {
+        key: "checkExistCSSRule",
+        value: function checkExistCSSRule(cssRuleName) {
+            for (var pos = 0; pos < document.styleSheets[0].cssRules.length; pos++) {
+                var sheet = document.styleSheets[0].cssRules[pos];
+                if (sheet.name == cssRuleName) {
+                    return sheet;
+                }
+            }
+            return null;
+        }
+    }, {
+        key: "selectElement",
+        value: function selectElement(selector) {
+            return selector == "" ? Object : document.querySelector(selector);
+        }
+    }]);
+
+    return Helper;
+}();
+
+exports.default = Helper;
 
 /***/ })
 /******/ ]);

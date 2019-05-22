@@ -1,4 +1,4 @@
-class Helper {
+export default class Helper {
     addCSSRule(rule, name) {
         if (checkExistCSSRule(name) == null) {     
             document.styleSheets[0].insertRule(rule);

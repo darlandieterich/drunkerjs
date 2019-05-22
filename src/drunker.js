@@ -8,6 +8,10 @@ class Drunker extends Effects {
 	Drunk(times = 0) {
 		super.GetEffect();
 	}
+
+	StopDrunk() {
+		super.StopEffect();
+	}
 };
 
 const DrunkerEffects = {
