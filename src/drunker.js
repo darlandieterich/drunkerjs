@@ -14,6 +14,7 @@ class Drunker extends Effects {
 	}
 };
 
+//Type effects
 const DrunkerEffects = {
 	BLUR: "Blur", 
 	DIZZY: "Dizzy", 
@@ -23,11 +24,22 @@ const DrunkerEffects = {
 	PULSE: "Pulse"
 };
 
+//Define velocity of effect
 const DrunkerSpeed = {
 	SLOW: "Slow",
 	NORMAL: "Normal",
 	FAST: "Fast"
 }
 
+//Define the type of Drunker
+const DrunkerType = {
+	MODERATE = "Moderate",	
+	UNTILDROP = "UntilDrop"
+}
+
+//Attach the enum to the class
 Drunker.DrunkerEffects = DrunkerEffects;
+Drunker.DrunkerSpeed = DrunkerSpeed;
+Drunker.DrunkerType = DrunkerType;
+
 module.exports = Drunker;

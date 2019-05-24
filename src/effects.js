@@ -9,17 +9,17 @@ class Effects{
     GetEffect (timeInterval) {
         return this[`_${this.effect}`]()
 	}
-	RecursiveEffect () {
+	RecursiveEffect() {
 	}
-	StopEffect () {
+	StopEffect() {
 		console.log('Stop Effect');
 	}
     // Blurred effect
-	_Blur () {
+	_Blur() {
         console.log('Blur');
 	}
 	// Dizzy effect
-	_Dizzy () {
+	_Dizzy() {
 		console.log('Dizzy..init');
 		let frameTime = 500;
 		let transition = 'all ' + (frameTime / 1000) + 's linear';
@@ -31,31 +31,30 @@ class Effects{
       	this.element.style.WebkitTransform = skew;
 	}
 	// Disappear the element
-	_Disappear () {
+	_Disappear() {
         console.log('Disappear');
 	}
     // Shake effect
-    _Shake () {
+    _Shake() {
         console.log('Shake');
     }
     // Rotation effect
-    _Spin () {
+    _Spin() {
         console.log('Spin');
 	}
-	
-	_Pulse () {
+	//Zoom in/out
+	_Pulse() {
 		console.log('Pulse');
 	}
 		
 	// Develop this after
 	/* // Effect of fall element
 	Fall () {
-	}
-	// Effect runnaway the element
-	Runaway () {
+		//fall X pixels
 	}
 	// Delay effect
 	Delay () {
+		//verify possibility to delayed actions on page
 	}
 	// Effect random
 	Auto () {
