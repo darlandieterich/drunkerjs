@@ -5,8 +5,8 @@ class Drunker extends Effects {
 		super(selector, effect);
 	}
 	
-	Drunk(times = 0) {
-		super.GetEffect();
+	Drunk(timeInterval = 0) {
+		super.GetEffect(timeInterval);
 	}
 
 	StopDrunk() {
@@ -19,8 +19,15 @@ const DrunkerEffects = {
 	DIZZY: "Dizzy", 
 	DISAPPEAR: "Disappear", 
 	SHAKE: "Shake",
-	SPIN: "Spin"
+	SPIN: "Spin",
+	PULSE: "Pulse"
 };
+
+const DrunkerSpeed = {
+	SLOW: "Slow",
+	NORMAL: "Normal",
+	FAST: "Fast"
+}
 
 Drunker.DrunkerEffects = DrunkerEffects;
 module.exports = Drunker;

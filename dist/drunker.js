@@ -133,9 +133,9 @@ var Drunker = function (_Effects) {
 	_createClass(Drunker, [{
 		key: "Drunk",
 		value: function Drunk() {
-			var times = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+			var timeInterval = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this);
+			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this, timeInterval);
 		}
 	}, {
 		key: "StopDrunk",
@@ -154,7 +154,14 @@ var DrunkerEffects = {
 	DIZZY: "Dizzy",
 	DISAPPEAR: "Disappear",
 	SHAKE: "Shake",
-	SPIN: "Spin"
+	SPIN: "Spin",
+	PULSE: "Pulse"
+};
+
+var DrunkerSpeed = {
+	SLOW: "Slow",
+	NORMAL: "Normal",
+	FAST: "Fast"
 };
 
 Drunker.DrunkerEffects = DrunkerEffects;
@@ -178,77 +185,90 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Effects = function () {
-				function Effects(selector, effect) {
-								_classCallCheck(this, Effects);
+	function Effects(selector, effect) {
+		_classCallCheck(this, Effects);
 
-								this.element = new _helper2.default().selectElement(selector);
-								this.effect = effect;
-				}
+		this.helper = new _helper2.default();
+		this.element = this.helper.selectElement(selector);
+		this.effect = effect;
+	}
 
-				_createClass(Effects, [{
-								key: 'GetEffect',
-								value: function GetEffect() {
-												return this['_' + this.effect]();
-								}
-				}, {
-								key: 'StopEffect',
-								value: function StopEffect() {
-												console.log('Stop Effect');
-								}
-								// Blurred effect
+	_createClass(Effects, [{
+		key: 'GetEffect',
+		value: function GetEffect(timeInterval) {
+			return this['_' + this.effect]();
+		}
+	}, {
+		key: 'StopEffect',
+		value: function StopEffect() {
+			console.log('Stop Effect');
+		}
+		// Blurred effect
 
-				}, {
-								key: '_Blur',
-								value: function _Blur() {
-												console.log('Blur');
-								}
-								// Dizzy effect
+	}, {
+		key: '_Blur',
+		value: function _Blur() {
+			console.log('Blur');
+		}
+		// Dizzy effect
 
-				}, {
-								key: '_Dizzy',
-								value: function _Dizzy() {
-												console.log(this.element);
-												console.log('Dizzy');
-								}
-								// Disappear the element
+	}, {
+		key: '_Dizzy',
+		value: function _Dizzy() {
+			console.log('Dizzy..init');
+			var frameTime = 500;
+			var transition = 'all ' + frameTime / 1000 + 's linear';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+			var rand = Math.round(Math.random() * 10) * (Math.random() < 0.5 ? -1 : 1);
+			var skew = 'skewX(' + rand + 'deg)';
+			this.element.style.transform = skew;
+			this.element.style.WebkitTransform = skew;
+		}
+		// Disappear the element
 
-				}, {
-								key: '_Disappear',
-								value: function _Disappear() {
-												console.log('Disappear');
-								}
-								// Shake effect
+	}, {
+		key: '_Disappear',
+		value: function _Disappear() {
+			console.log('Disappear');
+		}
+		// Shake effect
 
-				}, {
-								key: '_Shake',
-								value: function _Shake() {
-												console.log('Shake');
-								}
-								// Rotation effect
+	}, {
+		key: '_Shake',
+		value: function _Shake() {
+			console.log('Shake');
+		}
+		// Rotation effect
 
-				}, {
-								key: '_Spin',
-								value: function _Spin() {
-												console.log('Spin');
-								}
+	}, {
+		key: '_Spin',
+		value: function _Spin() {
+			console.log('Spin');
+		}
+	}, {
+		key: '_Pulse',
+		value: function _Pulse() {
+			console.log('Pulse');
+		}
 
-								// Develop this after
-								/* // Effect of fall element
-        Fall () {
-        }
-        // Effect runnaway the element
-        Runaway () {
-        }
-        // Delay effect
-        Delay () {
-        }
-        // Effect random
-        Auto () {
-        } */
+		// Develop this after
+		/* // Effect of fall element
+  Fall () {
+  }
+  // Effect runnaway the element
+  Runaway () {
+  }
+  // Delay effect
+  Delay () {
+  }
+  // Effect random
+  Auto () {
+  } */
 
-				}]);
+	}]);
 
-				return Effects;
+	return Effects;
 }();
 
 module.exports = Effects;
