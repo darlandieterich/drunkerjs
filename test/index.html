@@ -10,7 +10,10 @@
     <script src="../dist/drunker.js"></script>
     <script>
         var Drunker = new Drunker('#value', Drunker.DrunkerEffects.DIZZY);
-        Drunker.Drunk();
+        Drunker.Drunk({
+            type: Drunker.DrunkerType.UNTILDROP, 
+            speed: Drunker.DrunkerSpeed.NORMAL
+        });
     </script>
 </body>
 </html>

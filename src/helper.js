@@ -18,4 +18,8 @@ export default class Helper {
     selectElement(selector) {
         return selector == "" ? Object : document.querySelector(selector);
     }
+
+    getPropNames(object) {
+        return Object.getOwnPropertyNames(obj)
+    }
 }

@@ -133,9 +133,9 @@ var Drunker = function (_Effects) {
 	_createClass(Drunker, [{
 		key: "Drunk",
 		value: function Drunk() {
-			var timeInterval = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this, timeInterval);
+			_get(Drunker.prototype.__proto__ || Object.getPrototypeOf(Drunker.prototype), "GetEffect", this).call(this, options);
 		}
 	}, {
 		key: "StopDrunk",
@@ -149,6 +149,7 @@ var Drunker = function (_Effects) {
 
 ;
 
+//Type effects
 var DrunkerEffects = {
 	BLUR: "Blur",
 	DIZZY: "Dizzy",
@@ -158,13 +159,23 @@ var DrunkerEffects = {
 	PULSE: "Pulse"
 };
 
+//Define velocity of effect
 var DrunkerSpeed = {
 	SLOW: "Slow",
 	NORMAL: "Normal",
 	FAST: "Fast"
-};
 
-Drunker.DrunkerEffects = DrunkerEffects;
+	//Define the type of Drunker
+};var DrunkerType = {
+	MODERATE: "Moderate", //One time
+	UNTILDROP: "UntilDrop" //Recursive mode
+
+
+	//Attach the enum to the class
+};Drunker.DrunkerEffects = DrunkerEffects;
+Drunker.DrunkerSpeed = DrunkerSpeed;
+Drunker.DrunkerType = DrunkerType;
+
 module.exports = Drunker;
 
 /***/ }),
@@ -199,6 +210,9 @@ var Effects = function () {
 			return this['_' + this.effect]();
 		}
 	}, {
+		key: 'RecursiveEffect',
+		value: function RecursiveEffect() {}
+	}, {
 		key: 'StopEffect',
 		value: function StopEffect() {
 			console.log('Stop Effect');
@@ -208,6 +222,8 @@ var Effects = function () {
 	}, {
 		key: '_Blur',
 		value: function _Blur() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Blur');
 		}
 		// Dizzy effect
@@ -215,6 +231,8 @@ var Effects = function () {
 	}, {
 		key: '_Dizzy',
 		value: function _Dizzy() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Dizzy..init');
 			var frameTime = 500;
 			var transition = 'all ' + frameTime / 1000 + 's linear';
@@ -230,6 +248,8 @@ var Effects = function () {
 	}, {
 		key: '_Disappear',
 		value: function _Disappear() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Disappear');
 		}
 		// Shake effect
@@ -237,6 +257,8 @@ var Effects = function () {
 	}, {
 		key: '_Shake',
 		value: function _Shake() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Shake');
 		}
 		// Rotation effect
@@ -244,23 +266,28 @@ var Effects = function () {
 	}, {
 		key: '_Spin',
 		value: function _Spin() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Spin');
 		}
+		//Zoom in/out
+
 	}, {
 		key: '_Pulse',
 		value: function _Pulse() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
 			console.log('Pulse');
 		}
 
 		// Develop this after
 		/* // Effect of fall element
   Fall () {
-  }
-  // Effect runnaway the element
-  Runaway () {
+  	//fall X pixels
   }
   // Delay effect
   Delay () {
+  	//verify possibility to delayed actions on page
   }
   // Effect random
   Auto () {
@@ -315,6 +342,11 @@ var Helper = function () {
         key: "selectElement",
         value: function selectElement(selector) {
             return selector == "" ? Object : document.querySelector(selector);
+        }
+    }, {
+        key: "getPropNames",
+        value: function getPropNames(object) {
+            return Object.getOwnPropertyNames(obj);
         }
     }]);
 

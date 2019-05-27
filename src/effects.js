@@ -4,7 +4,7 @@ class Effects{
     constructor(selector, effect) {
 		this.helper = new Helper();
 		this.element = this.helper.selectElement(selector);
-		this.effect   = effect;				
+		this.effect   = effect;
     }
     GetEffect (timeInterval) {
         return this[`_${this.effect}`]()
@@ -15,11 +15,11 @@ class Effects{
 		console.log('Stop Effect');
 	}
     // Blurred effect
-	_Blur() {
+	_Blur(options = {}) {
         console.log('Blur');
 	}
 	// Dizzy effect
-	_Dizzy() {
+	_Dizzy(options = {}) {
 		console.log('Dizzy..init');
 		let frameTime = 500;
 		let transition = 'all ' + (frameTime / 1000) + 's linear';
@@ -31,19 +31,19 @@ class Effects{
       	this.element.style.WebkitTransform = skew;
 	}
 	// Disappear the element
-	_Disappear() {
+	_Disappear(options = {}) {
         console.log('Disappear');
 	}
     // Shake effect
-    _Shake() {
+    _Shake(options = {}) {
         console.log('Shake');
     }
     // Rotation effect
-    _Spin() {
+    _Spin(options = {}) {
         console.log('Spin');
 	}
 	//Zoom in/out
-	_Pulse() {
+	_Pulse(options = {}) {
 		console.log('Pulse');
 	}
 		

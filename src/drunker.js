@@ -5,8 +5,8 @@ class Drunker extends Effects {
 		super(selector, effect);
 	}
 	
-	Drunk(timeInterval = 0) {
-		super.GetEffect(timeInterval);
+	Drunk(options = {}) {
+		super.GetEffect(options);
 	}
 
 	StopDrunk() {
@@ -33,8 +33,8 @@ const DrunkerSpeed = {
 
 //Define the type of Drunker
 const DrunkerType = {
-	MODERATE = "Moderate",	
-	UNTILDROP = "UntilDrop"
+	MODERATE: "Moderate",	//One time
+	UNTILDROP: "UntilDrop" //Recursive mode
 }
 
 //Attach the enum to the class
