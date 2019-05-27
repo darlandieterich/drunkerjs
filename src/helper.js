@@ -19,6 +19,10 @@ export default class Helper {
         return selector == "" ? Object : document.querySelector(selector);
     }
 
+    random(range, negative = true){
+        return Math.round(Math.random() * 10) * (negative ? (Math.random() < 0.5 ? -1 : 1) : 0);
+    }
+
     getPropNames(object) {
         return Object.getOwnPropertyNames(obj)
     }

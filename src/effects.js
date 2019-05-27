@@ -21,8 +21,23 @@ class Effects{
 	// Dizzy effect
 	_Dizzy(options = {}) {
 		console.log('Dizzy..init');
-		let frameTime = 500;
-		let transition = 'all ' + (frameTime / 1000) + 's linear';
+		let velocity = 0.2
+		switch (options.speed) {
+			case "Slow":
+				velocity = 0.1
+				break;
+			case "Normal":
+				velocity = 0.5
+				break;
+			case "Fast":
+				velocity = 1
+				break;
+			default:
+				velocity = 0.5
+				break;
+		}
+		let type = options.type == "Moderate" ? 1 : 2;
+		let transition = 'all ' + (velocity) + 's linear';
   		this.element.style.WebkitTransition = transition;
   		this.element.style.transition = transition;
   		let rand = Math.round(Math.random() * 10) * (Math.random() < 0.5 ? -1 : 1);
