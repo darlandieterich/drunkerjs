@@ -234,11 +234,26 @@ var Effects = function () {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Dizzy..init');
-			var frameTime = 500;
-			var transition = 'all ' + frameTime / 1000 + 's linear';
+			var velocity = 0.2;
+			switch (options.speed) {
+				case "Slow":
+					velocity = 0.1;
+					break;
+				case "Normal":
+					velocity = 0.5;
+					break;
+				case "Fast":
+					velocity = 1;
+					break;
+				default:
+					velocity = 0.5;
+					break;
+			}
+			var type = options.type == "Moderate" ? 1 : 2;
+			var transition = 'all ' + velocity + 's linear';
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
-			var rand = Math.round(Math.random() * 10) * (Math.random() < 0.5 ? -1 : 1);
+			var rand = this.helper.random(15);
 			var skew = 'skewX(' + rand + 'deg)';
 			this.element.style.transform = skew;
 			this.element.style.WebkitTransform = skew;
@@ -342,6 +357,17 @@ var Helper = function () {
         key: "selectElement",
         value: function selectElement(selector) {
             return selector == "" ? Object : document.querySelector(selector);
+        }
+    }, {
+        key: "random",
+        value: function random(range) {
+            var negative = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+            var res = Math.round(Math.random() * 10);
+            if (negative) {
+                res = res * (Math.random() < 0.5 ? -1 : 1);
+            }
+            return res;
         }
     }, {
         key: "getPropNames",

@@ -20,7 +20,9 @@ export default class Helper {
     }
 
     random(range, negative = true){
-        return Math.round(Math.random() * 10) * (negative ? (Math.random() < 0.5 ? -1 : 1) : 0);
+        var res = Math.round(Math.random() * 10);
+        if (negative) { res = res * (Math.random() < 0.5 ? -1 : 1); }
+        return res;
     }
 
     getPropNames(object) {

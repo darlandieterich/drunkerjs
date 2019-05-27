@@ -40,7 +40,7 @@ class Effects{
 		let transition = 'all ' + (velocity) + 's linear';
   		this.element.style.WebkitTransition = transition;
   		this.element.style.transition = transition;
-  		let rand = Math.round(Math.random() * 10) * (Math.random() < 0.5 ? -1 : 1);
+  		let rand = this.helper.random(15)
   		let skew = 'skewX(' + rand + 'deg)';
       	this.element.style.transform = skew;
       	this.element.style.WebkitTransform = skew;
