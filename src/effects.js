@@ -5,9 +5,10 @@ class Effects{
 		this.helper = new Helper();
 		this.element = this.helper.selectElement(selector);
 		this.effect   = effect;
+		this.interval = null;		
     }
-    GetEffect (timeInterval) {
-        return this[`_${this.effect}`]()
+    GetEffect (options) {
+        return this[`_${this.effect}`](options)
 	}
 	RecursiveEffect() {
 	}
