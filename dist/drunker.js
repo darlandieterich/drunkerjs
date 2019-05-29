@@ -202,12 +202,13 @@ var Effects = function () {
 		this.helper = new _helper2.default();
 		this.element = this.helper.selectElement(selector);
 		this.effect = effect;
+		this.interval = null;
 	}
 
 	_createClass(Effects, [{
 		key: 'GetEffect',
-		value: function GetEffect(timeInterval) {
-			return this['_' + this.effect]();
+		value: function GetEffect(options) {
+			return this['_' + this.effect](options);
 		}
 	}, {
 		key: 'RecursiveEffect',
@@ -250,13 +251,13 @@ var Effects = function () {
 					break;
 			}
 			var type = options.type == "Moderate" ? 1 : 2;
+			var rand = this.helper.random(15);
+			var transform = 'skewX(' + rand + 'deg)';
 			var transition = 'all ' + velocity + 's linear';
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
-			var rand = this.helper.random(15);
-			var skew = 'skewX(' + rand + 'deg)';
-			this.element.style.transform = skew;
-			this.element.style.WebkitTransform = skew;
+			this.element.style.transform = transform;
+			this.element.style.WebkitTransform = transform;
 		}
 		// Disappear the element
 
@@ -294,20 +295,13 @@ var Effects = function () {
 
 			console.log('Pulse');
 		}
+		// Effect random
 
-		// Develop this after
-		/* // Effect of fall element
-  Fall () {
-  	//fall X pixels
-  }
-  // Delay effect
-  Delay () {
-  	//verify possibility to delayed actions on page
-  }
-  // Effect random
-  Auto () {
-  } */
-
+	}, {
+		key: 'Auto',
+		value: function Auto() {
+			console.log('Auto');
+		}
 	}]);
 
 	return Effects;

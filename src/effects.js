@@ -38,13 +38,13 @@ class Effects{
 				break;
 		}
 		let type = options.type == "Moderate" ? 1 : 2;
+		let rand = this.helper.random(15)
+		let transform = 'skewX(' + rand + 'deg)';
 		let transition = 'all ' + (velocity) + 's linear';
   		this.element.style.WebkitTransition = transition;
   		this.element.style.transition = transition;
-  		let rand = this.helper.random(15)
-  		let skew = 'skewX(' + rand + 'deg)';
-      	this.element.style.transform = skew;
-      	this.element.style.WebkitTransform = skew;
+      	this.element.style.transform = transform;
+      	this.element.style.WebkitTransform = transform;
 	}
 	// Disappear the element
 	_Disappear(options = {}) {
