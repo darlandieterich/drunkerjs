@@ -5,7 +5,7 @@ class Effects{
 		this.helper = new Helper();
 		this.element = this.helper.selectElement(selector);
 		this.effect   = effect;
-		this.interval = null;		
+		this.interval = null;
     }
     GetEffect (options) {
         return this[`_${this.effect}`](options)
@@ -62,19 +62,10 @@ class Effects{
 	_Pulse(options = {}) {
 		console.log('Pulse');
 	}
-		
-	// Develop this after
-	/* // Effect of fall element
-	Fall () {
-		//fall X pixels
-	}
-	// Delay effect
-	Delay () {
-		//verify possibility to delayed actions on page
-	}
 	// Effect random
 	Auto () {
-	} */
+		console.log('Auto');
+	}
 }
 
 module.exports = Effects;
