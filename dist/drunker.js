@@ -203,6 +203,7 @@ var Effects = function () {
 		this.element = this.helper.selectElement(selector);
 		this.effect = effect;
 		this.interval = null;
+		this.stop = null;
 	}
 
 	_createClass(Effects, [{
@@ -216,7 +217,7 @@ var Effects = function () {
 	}, {
 		key: 'StopEffect',
 		value: function StopEffect() {
-			console.log('Stop Effect');
+			this.stop();
 		}
 		// Blurred effect
 
@@ -250,14 +251,29 @@ var Effects = function () {
 					velocity = 0.5;
 					break;
 			}
-			var type = options.type == "Moderate" ? 1 : 2;
+
 			var rand = this.helper.random(15);
 			var transform = 'skewX(' + rand + 'deg)';
-			var transition = 'all ' + velocity + 's linear';
+			var transition = velocity + 's';
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 			this.element.style.transform = transform;
 			this.element.style.WebkitTransform = transform;
+
+			if (options.type == "UntilDrop") {
+				this.interval = setInterval(function () {
+					rand = this.helper.random(15);
+					transform = 'skewX(' + rand + 'deg)';
+					this.element.style.transform = transform;
+					this.element.style.WebkitTransform = transform;
+				}.bind(this), 1000);
+			}
+
+			this.stop = function stop() {
+				this.element.style.transform = '';
+				this.element.style.WebkitTransform = '';
+				clearInterval(this.interval);
+			};
 		}
 		// Disappear the element
 

@@ -38,17 +38,28 @@ class Effects{
 				velocity = 0.5
 				break;
 		}
-		let type = options.type == "Moderate" ? 1 : 2;
+		
 		let rand = this.helper.random(15)
 		let transform = 'skewX(' + rand + 'deg)';
-		let transition = 'all ' + (velocity) + 's linear';
-  		this.element.style.WebkitTransition = transition;
-  		this.element.style.transition = transition;
-      	this.element.style.transform = transform;
+		let transition = (velocity) + 's';
+		this.element.style.WebkitTransition = transition;
+		this.element.style.transition = transition;
+		this.element.style.transform = transform;
 		this.element.style.WebkitTransform = transform;
+
+		if (options.type == "UntilDrop"){
+			this.interval = setInterval(function () {
+				rand = this.helper.random(15)				
+				transform = 'skewX(' + rand + 'deg)';
+				this.element.style.transform = transform;
+				this.element.style.WebkitTransform = transform;
+			}.bind(this), 1000);
+		}
 
 		this.stop = function stop () {
 			this.element.style.transform = '';
+			this.element.style.WebkitTransform = '';
+			clearInterval(this.interval);
 		}
 		  
 	}

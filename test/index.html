@@ -6,11 +6,11 @@
 </head>
 <body>
     <h2>Test</h2>
-    <div id="value" style="width:150px;height:150px;background-color:blue">the test</div>
+    <div id="target" style="width:150px;height:150px;background-color:blue">the test</div>
     <button id="reset">Reset</button>
     <script src="../dist/drunker.js"></script>
     <script>
-        var d = new Drunker('#value', Drunker.DrunkerEffects.DIZZY);
+        var d = new Drunker('#target', Drunker.DrunkerEffects.DIZZY);
         d.Drunk({
             type: Drunker.DrunkerType.UNTILDROP, 
             speed: Drunker.DrunkerSpeed.NORMAL
