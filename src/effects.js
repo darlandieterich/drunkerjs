@@ -23,37 +23,39 @@ class Effects{
 	// Dizzy effect
 	_Dizzy(options = {}) {
 		console.log('Dizzy..init');
-		let velocity = 0.2
+		let fps = 1000
 		switch (options.speed) {
-			case "Slow":
-				velocity = 0.1
+			case "Fast":
+				fps = 100
 				break;
 			case "Normal":
-				velocity = 0.5
+				fps = 500
 				break;
-			case "Fast":
-				velocity = 1
+			case "Slow":
+				fps = 1000
 				break;
 			default:
-				velocity = 0.5
+				fps = 500
 				break;
 		}
 		
 		let rand = this.helper.random(15)
 		let transform = 'skewX(' + rand + 'deg)';
-		let transition = (velocity) + 's';
+		let transition = (fps/1000) + 's';
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
 		this.element.style.transform = transform;
 		this.element.style.WebkitTransform = transform;
 
-		if (options.type == "UntilDrop"){
-			this.interval = setInterval(function () {
-				rand = this.helper.random(15)				
-				transform = 'skewX(' + rand + 'deg)';
-				this.element.style.transform = transform;
-				this.element.style.WebkitTransform = transform;
-			}.bind(this), 1000);
+		if (options.type){
+			if (options.type == "UntilDrop"){
+				this.interval = setInterval(function () {
+					rand = this.helper.random(15)				
+					transform = 'skewX(' + rand + 'deg)';
+					this.element.style.transform = transform;
+					this.element.style.WebkitTransform = transform;
+				}.bind(this), fps);
+			}
 		}
 
 		this.stop = function stop () {

@@ -236,37 +236,39 @@ var Effects = function () {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Dizzy..init');
-			var velocity = 0.2;
+			var fps = 1000;
 			switch (options.speed) {
-				case "Slow":
-					velocity = 0.1;
+				case "Fast":
+					fps = 100;
 					break;
 				case "Normal":
-					velocity = 0.5;
+					fps = 500;
 					break;
-				case "Fast":
-					velocity = 1;
+				case "Slow":
+					fps = 1000;
 					break;
 				default:
-					velocity = 0.5;
+					fps = 500;
 					break;
 			}
 
 			var rand = this.helper.random(15);
 			var transform = 'skewX(' + rand + 'deg)';
-			var transition = velocity + 's';
+			var transition = fps / 1000 + 's';
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 			this.element.style.transform = transform;
 			this.element.style.WebkitTransform = transform;
 
-			if (options.type == "UntilDrop") {
-				this.interval = setInterval(function () {
-					rand = this.helper.random(15);
-					transform = 'skewX(' + rand + 'deg)';
-					this.element.style.transform = transform;
-					this.element.style.WebkitTransform = transform;
-				}.bind(this), 1000);
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						rand = this.helper.random(15);
+						transform = 'skewX(' + rand + 'deg)';
+						this.element.style.transform = transform;
+						this.element.style.WebkitTransform = transform;
+					}.bind(this), fps);
+				}
 			}
 
 			this.stop = function stop() {
