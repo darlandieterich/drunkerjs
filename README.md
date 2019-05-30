@@ -15,14 +15,19 @@ _________________
     <title>Test Drunker</title>
 </head>
 <body>
-    <h2>Dizzy</h2>
-    <div id="value" style="width:150px;height:150px;background-color:blue">
-      the test
-    </div>
+    <h2>Test</h2>
+    <div id="target" style="width:150px;height:150px;background-color:blue">the test</div>
+    <button id="reset">Reset</button>
     <script src="../dist/drunker.js"></script>
     <script>
-        var Drunker = new Drunker('#value', Drunker.DrunkerEffects.DIZZY);
-        Drunker.Drunk();
+        var d = new Drunker('#target', Drunker.DrunkerEffects.DIZZY);
+        d.Drunk({
+            type: Drunker.DrunkerType.UNTILDROP, 
+            speed: Drunker.DrunkerSpeed.NORMAL
+        });
+        document.getElementById('reset').onclick = function() {
+            d.StopDrunk()
+        }
     </script>
 </body>
 </html>
