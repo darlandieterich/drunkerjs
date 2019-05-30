@@ -6,6 +6,7 @@ class Effects{
 		this.element = this.helper.selectElement(selector);
 		this.effect   = effect;
 		this.interval = null;
+		this.stop = null;
     }
     GetEffect (options) {
         return this[`_${this.effect}`](options)
@@ -13,7 +14,7 @@ class Effects{
 	RecursiveEffect() {
 	}
 	StopEffect() {
-		console.log('Stop Effect');
+		this.stop();
 	}
     // Blurred effect
 	_Blur(options = {}) {
@@ -44,7 +45,12 @@ class Effects{
   		this.element.style.WebkitTransition = transition;
   		this.element.style.transition = transition;
       	this.element.style.transform = transform;
-      	this.element.style.WebkitTransform = transform;
+		this.element.style.WebkitTransform = transform;
+
+		this.stop = function stop () {
+			this.element.style.transform = '';
+		}
+		  
 	}
 	// Disappear the element
 	_Disappear(options = {}) {
