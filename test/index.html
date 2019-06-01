@@ -10,7 +10,7 @@
     <button id="reset">Reset</button>
     <script src="../dist/drunker.js"></script>
     <script>
-        var d = new Drunker('#target', Drunker.DrunkerEffects.SHAKE);
+        var d = new Drunker('#target', Drunker.DrunkerEffects.SPIN);
         d.Drunk({
             type: Drunker.DrunkerType.UNTILDROP, 
             speed: Drunker.DrunkerSpeed.NORMAL
@@ -18,7 +18,6 @@
         document.getElementById('reset').onclick = function() {
             d.StopDrunk()
         }
-        console.log(this)
     </script>
 </body>
 </html>

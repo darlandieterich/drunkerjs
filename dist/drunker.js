@@ -225,7 +225,6 @@ var Effects = function () {
 
 			console.log('Blur..init');
 			var fps = this.helper.getSpeed(options.speed);
-
 			var blured = false;
 			var rand = this.helper.random(20, false);
 			var filter = 'blur(' + rand + 'px)';
@@ -263,7 +262,6 @@ var Effects = function () {
 
 			console.log('Dizzy..init');
 			var fps = this.helper.getSpeed(options.speed);
-
 			var rand = this.helper.random(15);
 			var transform = 'skewX(' + rand + 'deg)';
 			var transition = fps / 1000 + 's';
@@ -300,7 +298,6 @@ var Effects = function () {
 
 			console.log('Disappear.. init');
 			var fps = this.helper.getSpeed(options.speed);
-
 			var disappear = false;
 			var opacity = '1.0';
 			var transition = 'opacity ' + fps / 1000 + 's';
@@ -334,7 +331,6 @@ var Effects = function () {
 
 			console.log('Shake..init');
 			var fps = this.helper.getSpeed(options.speed);
-
 			var rand = this.helper.random(15);
 			var translate = 'translate(' + rand + 'px,' + rand + 'px)';
 			this.element.style.transform = translate;
@@ -369,7 +365,35 @@ var Effects = function () {
 		value: function _Spin() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Spin');
+			console.log('Spin..init');
+			var fps = this.helper.getSpeed(options.speed);
+			var deg = 180;
+			var rand = this.helper.random(deg);
+			var rotate = 'rotate(' + rand + 'deg)';
+			this.element.style.transform = rotate;
+			this.element.style.WebkitTransform = rotate;
+			var transition = fps / 1000 + 's';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						rand = this.helper.random(deg);
+						rotate = 'rotate(' + rand + 'deg)';
+						this.element.style.transform = rotate;
+						this.element.style.WebkitTransform = rotate;
+					}.bind(this), fps);
+				}
+			}
+
+			this.stop = function stop() {
+				this.element.style.transform = '';
+				this.element.style.WebkitTransform = '';
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 		//Zoom in/out
 
@@ -442,7 +466,7 @@ var Helper = function () {
         value: function random(range) {
             var negative = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-            var res = Math.round(Math.random() * 10);
+            var res = Math.round(Math.random() * range);
             if (negative) {
                 res = res * (Math.random() < 0.5 ? -1 : 1);
             }

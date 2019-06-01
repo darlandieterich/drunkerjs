@@ -20,7 +20,7 @@ export default class Helper {
     }
 
     random(range, negative = true){
-        var res = Math.round(Math.random() * 10);
+        var res = Math.round(Math.random() * range);
         if (negative) { res = res * (Math.random() < 0.5 ? -1 : 1); }
         return res;
     }
@@ -30,11 +30,11 @@ export default class Helper {
 			case "Fast":
 				return 100
 			case "Normal":
-				return 500
+				return 600
 			case "Slow":
-				return 1000
+				return 1100
 			default:
-				return 500
+				return 600
 		}
     }
 
