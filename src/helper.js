@@ -25,6 +25,19 @@ export default class Helper {
         return res;
     }
 
+    getSpeed(speed) {
+        switch (speed) {
+			case "Fast":
+				return 100
+			case "Normal":
+				return 500
+			case "Slow":
+				return 1000
+			default:
+				return 500
+		}
+    }
+
     getPropNames(object) {
         return Object.getOwnPropertyNames(obj)
     }

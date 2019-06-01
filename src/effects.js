@@ -11,29 +11,13 @@ class Effects{
     GetEffect (options) {
         return this[`_${this.effect}`](options)
 	}
-	RecursiveEffect() {
-	}
 	StopEffect() {
 		this.stop();
 	}
     // Blurred effect
 	_Blur(options = {}) {
 		console.log('Blur..init');
-		let fps = 1000
-		switch (options.speed) {
-			case "Fast":
-				fps = 100
-				break;
-			case "Normal":
-				fps = 500
-				break;
-			case "Slow":
-				fps = 1000
-				break;
-			default:
-				fps = 500
-				break;
-		}
+		let fps = this.helper.getSpeed(options.speed)
 		
 		let blured = false;
 		let rand = this.helper.random(20, false);
@@ -64,21 +48,7 @@ class Effects{
 	// Dizzy effect
 	_Dizzy(options = {}) {
 		console.log('Dizzy..init');
-		let fps = 1000
-		switch (options.speed) {
-			case "Fast":
-				fps = 100
-				break;
-			case "Normal":
-				fps = 500
-				break;
-			case "Slow":
-				fps = 1000
-				break;
-			default:
-				fps = 500
-				break;
-		}
+		let fps = this.helper.getSpeed(options.speed)
 		
 		let rand = this.helper.random(15)
 		let transform = 'skewX(' + rand + 'deg)';
@@ -107,7 +77,8 @@ class Effects{
 	}
 	// Disappear the element
 	_Disappear(options = {}) {
-        console.log('Disappear');
+		console.log('Disappear.. init');
+		
 	}
     // Shake effect
     _Shake(options = {}) {

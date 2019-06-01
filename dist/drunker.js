@@ -207,41 +207,24 @@ var Effects = function () {
 	}
 
 	_createClass(Effects, [{
-		key: "GetEffect",
+		key: 'GetEffect',
 		value: function GetEffect(options) {
-			return this["_" + this.effect](options);
+			return this['_' + this.effect](options);
 		}
 	}, {
-		key: "RecursiveEffect",
-		value: function RecursiveEffect() {}
-	}, {
-		key: "StopEffect",
+		key: 'StopEffect',
 		value: function StopEffect() {
 			this.stop();
 		}
 		// Blurred effect
 
 	}, {
-		key: "_Blur",
+		key: '_Blur',
 		value: function _Blur() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Blur..init');
-			var fps = 1000;
-			switch (options.speed) {
-				case "Fast":
-					fps = 100;
-					break;
-				case "Normal":
-					fps = 500;
-					break;
-				case "Slow":
-					fps = 1000;
-					break;
-				default:
-					fps = 500;
-					break;
-			}
+			var fps = this.helper.getSpeed(options.speed);
 
 			var blured = false;
 			var rand = this.helper.random(20, false);
@@ -274,26 +257,12 @@ var Effects = function () {
 		// Dizzy effect
 
 	}, {
-		key: "_Dizzy",
+		key: '_Dizzy',
 		value: function _Dizzy() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Dizzy..init');
-			var fps = 1000;
-			switch (options.speed) {
-				case "Fast":
-					fps = 100;
-					break;
-				case "Normal":
-					fps = 500;
-					break;
-				case "Slow":
-					fps = 1000;
-					break;
-				default:
-					fps = 500;
-					break;
-			}
+			var fps = this.helper.getSpeed(options.speed);
 
 			var rand = this.helper.random(15);
 			var transform = 'skewX(' + rand + 'deg)';
@@ -325,16 +294,46 @@ var Effects = function () {
 		// Disappear the element
 
 	}, {
-		key: "_Disappear",
+		key: '_Disappear',
 		value: function _Disappear() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Disappear');
+			console.log('Disappear.. init');
+			/////
+			var fps = this.helper.getSpeed(options.speed);
+
+			var blured = false;
+			var rand = this.helper.random(20, false);
+			var filter = 'blur(' + rand + 'px)';
+			var transition = fps / 1000 + 's';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+			this.element.style.filter = filter;
+			this.element.style.WebkitFilter = filter;
+
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						var rand = this.helper.random(20, false);
+						var filter = 'blur(' + rand + 'px)';
+						this.element.style.filter = filter;
+						this.element.style.WebkitFilter = filter;
+					}.bind(this), fps);
+				}
+			}
+
+			this.stop = function stop() {
+				this.element.style.filter = '';
+				this.element.style.WebkitFilter = '';
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 		// Shake effect
 
 	}, {
-		key: "_Shake",
+		key: '_Shake',
 		value: function _Shake() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -343,7 +342,7 @@ var Effects = function () {
 		// Rotation effect
 
 	}, {
-		key: "_Spin",
+		key: '_Spin',
 		value: function _Spin() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -352,7 +351,7 @@ var Effects = function () {
 		//Zoom in/out
 
 	}, {
-		key: "_Pulse",
+		key: '_Pulse',
 		value: function _Pulse() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -361,7 +360,7 @@ var Effects = function () {
 		// Effect random
 
 	}, {
-		key: "Auto",
+		key: 'Auto',
 		value: function Auto() {
 			console.log('Auto');
 		}
@@ -425,6 +424,20 @@ var Helper = function () {
                 res = res * (Math.random() < 0.5 ? -1 : 1);
             }
             return res;
+        }
+    }, {
+        key: "getSpeed",
+        value: function getSpeed(speed) {
+            switch (speed) {
+                case "Fast":
+                    return 100;
+                case "Normal":
+                    return 500;
+                case "Slow":
+                    return 1000;
+                default:
+                    return 500;
+            }
         }
     }, {
         key: "getPropNames",
