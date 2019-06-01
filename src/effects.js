@@ -84,7 +84,6 @@ class Effects{
 		let opacity = '1.0';
 		let transition = 'opacity '+(fps / 1000)+'s';
 		this.element.style.opacity = opacity;
-		this.element.style.WebkitFilter = opacity;
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
 
@@ -105,7 +104,33 @@ class Effects{
 	}
     // Shake effect
     _Shake(options = {}) {
-        console.log('Shake');
+		console.log('Shake..init');
+		let fps = this.helper.getSpeed(options.speed)
+		
+		let rand = this.helper.random(15)
+		let translate = 'translate('+rand+'px,'+rand+'px)';
+		this.element.style.transform = translate;
+		this.element.style.WebkitTransform = translate;
+		let transition = (fps / 1000)+'s ease-in-out';
+		this.element.style.WebkitTransition = transition;
+		this.element.style.transition = transition;
+
+		if (options.type){
+			if (options.type == "UntilDrop"){
+				this.interval = setInterval(function () {
+					rand = this.helper.random(15)
+					translate = 'translate('+rand+'px,'+rand+'px)';
+					this.element.style.transform = translate;
+					this.element.style.WebkitTransform = translate;
+				}.bind(this), fps);
+			}
+		}
+
+		this.stop = function stop () {
+			this.element.style.transform = '';
+			this.element.style.WebkitTransform = '';
+			if (this.interval) { clearInterval(this.interval); }
+		}
     }
     // Rotation effect
     _Spin(options = {}) {

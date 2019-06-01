@@ -33,7 +33,7 @@ const DrunkerSpeed = {
 
 //Define the type of Drunker
 const DrunkerType = {
-	MODERATE: "Moderate",	//One time
+	MODERATE: "Moderate",  //One time
 	UNTILDROP: "UntilDrop" //Recursive mode
 }
 

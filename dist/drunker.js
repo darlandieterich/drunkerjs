@@ -305,7 +305,6 @@ var Effects = function () {
 			var opacity = '1.0';
 			var transition = 'opacity ' + fps / 1000 + 's';
 			this.element.style.opacity = opacity;
-			this.element.style.WebkitFilter = opacity;
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 
@@ -333,7 +332,35 @@ var Effects = function () {
 		value: function _Shake() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Shake');
+			console.log('Shake..init');
+			var fps = this.helper.getSpeed(options.speed);
+
+			var rand = this.helper.random(15);
+			var translate = 'translate(' + rand + 'px,' + rand + 'px)';
+			this.element.style.transform = translate;
+			this.element.style.WebkitTransform = translate;
+			var transition = fps / 1000 + 's ease-in-out';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						rand = this.helper.random(15);
+						translate = 'translate(' + rand + 'px,' + rand + 'px)';
+						this.element.style.transform = translate;
+						this.element.style.WebkitTransform = translate;
+					}.bind(this), fps);
+				}
+			}
+
+			this.stop = function stop() {
+				this.element.style.transform = '';
+				this.element.style.WebkitTransform = '';
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 		// Rotation effect
 
