@@ -299,32 +299,28 @@ var Effects = function () {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Disappear.. init');
-			/////
 			var fps = this.helper.getSpeed(options.speed);
 
-			var blured = false;
-			var rand = this.helper.random(20, false);
-			var filter = 'blur(' + rand + 'px)';
-			var transition = fps / 1000 + 's';
+			var disappear = false;
+			var opacity = '1.0';
+			var transition = 'opacity ' + fps / 1000 + 's';
+			this.element.style.opacity = opacity;
+			this.element.style.WebkitFilter = opacity;
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
-			this.element.style.filter = filter;
-			this.element.style.WebkitFilter = filter;
 
 			if (options.type) {
 				if (options.type == "UntilDrop") {
 					this.interval = setInterval(function () {
-						var rand = this.helper.random(20, false);
-						var filter = 'blur(' + rand + 'px)';
-						this.element.style.filter = filter;
-						this.element.style.WebkitFilter = filter;
+						opacity = disappear ? '1.0' : '0.0';
+						this.element.style.opacity = opacity;
+						disappear = !disappear;
 					}.bind(this), fps);
 				}
 			}
 
 			this.stop = function stop() {
-				this.element.style.filter = '';
-				this.element.style.WebkitFilter = '';
+				this.element.style.opacity = '';
 				if (this.interval) {
 					clearInterval(this.interval);
 				}

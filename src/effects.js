@@ -78,7 +78,30 @@ class Effects{
 	// Disappear the element
 	_Disappear(options = {}) {
 		console.log('Disappear.. init');
+		let fps = this.helper.getSpeed(options.speed)
 		
+		let disappear = false;		
+		let opacity = '1.0';
+		let transition = 'opacity '+(fps / 1000)+'s';
+		this.element.style.opacity = opacity;
+		this.element.style.WebkitFilter = opacity;
+		this.element.style.WebkitTransition = transition;
+		this.element.style.transition = transition;
+
+		if (options.type){
+			if (options.type == "UntilDrop"){
+				this.interval = setInterval(function () {
+					opacity = disappear ? '1.0' : '0.0';
+					this.element.style.opacity = opacity;
+					disappear = !disappear;
+				}.bind(this), fps);
+			}
+		}
+
+		this.stop = function stop () {
+			this.element.style.opacity = '';
+			if (this.interval) { clearInterval(this.interval); }
+		}
 	}
     // Shake effect
     _Shake(options = {}) {
