@@ -5,8 +5,8 @@ class Effects{
 		this.helper = new Helper();
 		this.element = this.helper.selectElement(selector);
 		this.effect   = effect;
-		this.interval = null;
-		this.stop = null;
+		this.interval = {};
+		this.stop = {};
     }
     GetEffect (options) {
         return this[`_${this.effect}`](options)
@@ -61,7 +61,7 @@ class Effects{
 		this.stop = function stop () {
 			this.element.style.transform = '';
 			this.element.style.WebkitTransform = '';
-			clearInterval(this.interval);
+			if (this.interval) { clearInterval(this.interval); }
 		}
 		  
 	}
