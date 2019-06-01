@@ -202,36 +202,79 @@ var Effects = function () {
 		this.helper = new _helper2.default();
 		this.element = this.helper.selectElement(selector);
 		this.effect = effect;
-		this.interval = null;
-		this.stop = null;
+		this.interval = {};
+		this.stop = {};
 	}
 
 	_createClass(Effects, [{
-		key: 'GetEffect',
+		key: "GetEffect",
 		value: function GetEffect(options) {
-			return this['_' + this.effect](options);
+			return this["_" + this.effect](options);
 		}
 	}, {
-		key: 'RecursiveEffect',
+		key: "RecursiveEffect",
 		value: function RecursiveEffect() {}
 	}, {
-		key: 'StopEffect',
+		key: "StopEffect",
 		value: function StopEffect() {
 			this.stop();
 		}
 		// Blurred effect
 
 	}, {
-		key: '_Blur',
+		key: "_Blur",
 		value: function _Blur() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Blur');
+			console.log('Blur..init');
+			var fps = 1000;
+			switch (options.speed) {
+				case "Fast":
+					fps = 100;
+					break;
+				case "Normal":
+					fps = 500;
+					break;
+				case "Slow":
+					fps = 1000;
+					break;
+				default:
+					fps = 500;
+					break;
+			}
+
+			var blured = false;
+			var rand = this.helper.random(20, false);
+			var filter = 'blur(' + rand + 'px)';
+			var transition = fps / 1000 + 's';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+			this.element.style.filter = filter;
+			this.element.style.WebkitFilter = filter;
+
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						var rand = this.helper.random(20, false);
+						var filter = 'blur(' + rand + 'px)';
+						this.element.style.filter = filter;
+						this.element.style.WebkitFilter = filter;
+					}.bind(this), fps);
+				}
+			}
+
+			this.stop = function stop() {
+				this.element.style.filter = '';
+				this.element.style.WebkitFilter = '';
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 		// Dizzy effect
 
 	}, {
-		key: '_Dizzy',
+		key: "_Dizzy",
 		value: function _Dizzy() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -274,13 +317,15 @@ var Effects = function () {
 			this.stop = function stop() {
 				this.element.style.transform = '';
 				this.element.style.WebkitTransform = '';
-				clearInterval(this.interval);
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
 			};
 		}
 		// Disappear the element
 
 	}, {
-		key: '_Disappear',
+		key: "_Disappear",
 		value: function _Disappear() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -289,7 +334,7 @@ var Effects = function () {
 		// Shake effect
 
 	}, {
-		key: '_Shake',
+		key: "_Shake",
 		value: function _Shake() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -298,7 +343,7 @@ var Effects = function () {
 		// Rotation effect
 
 	}, {
-		key: '_Spin',
+		key: "_Spin",
 		value: function _Spin() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -307,7 +352,7 @@ var Effects = function () {
 		//Zoom in/out
 
 	}, {
-		key: '_Pulse',
+		key: "_Pulse",
 		value: function _Pulse() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -316,7 +361,7 @@ var Effects = function () {
 		// Effect random
 
 	}, {
-		key: 'Auto',
+		key: "Auto",
 		value: function Auto() {
 			console.log('Auto');
 		}

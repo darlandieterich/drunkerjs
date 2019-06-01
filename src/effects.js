@@ -18,7 +18,48 @@ class Effects{
 	}
     // Blurred effect
 	_Blur(options = {}) {
-        console.log('Blur');
+		console.log('Blur..init');
+		let fps = 1000
+		switch (options.speed) {
+			case "Fast":
+				fps = 100
+				break;
+			case "Normal":
+				fps = 500
+				break;
+			case "Slow":
+				fps = 1000
+				break;
+			default:
+				fps = 500
+				break;
+		}
+		
+		let blured = false;
+		let rand = this.helper.random(20, false);
+		let filter = 'blur('+rand+'px)';
+		let transition = (fps/1000) + 's';
+		this.element.style.WebkitTransition = transition;
+		this.element.style.transition = transition;
+		this.element.style.filter = filter;
+		this.element.style.WebkitFilter = filter;
+
+		if (options.type){
+			if (options.type == "UntilDrop"){
+				this.interval = setInterval(function () {
+					let rand = this.helper.random(20, false);
+					let filter = 'blur('+rand+'px)';
+					this.element.style.filter = filter;
+					this.element.style.WebkitFilter = filter;
+				}.bind(this), fps);
+			}
+		}
+
+		this.stop = function stop () {
+			this.element.style.filter = '';
+			this.element.style.WebkitFilter = '';
+			if (this.interval) { clearInterval(this.interval); }
+		}
 	}
 	// Dizzy effect
 	_Dizzy(options = {}) {
@@ -62,8 +103,7 @@ class Effects{
 			this.element.style.transform = '';
 			this.element.style.WebkitTransform = '';
 			if (this.interval) { clearInterval(this.interval); }
-		}
-		  
+		}		  
 	}
 	// Disappear the element
 	_Disappear(options = {}) {

@@ -10,10 +10,10 @@
     <button id="reset">Reset</button>
     <script src="../dist/drunker.js"></script>
     <script>
-        var d = new Drunker('#target', Drunker.DrunkerEffects.DIZZY);
+        var d = new Drunker('#target', Drunker.DrunkerEffects.BLUR);
         d.Drunk({
             type: Drunker.DrunkerType.UNTILDROP, 
-            speed: Drunker.DrunkerSpeed.SLOW
+            speed: Drunker.DrunkerSpeed.NORMAL
         });
         document.getElementById('reset').onclick = function() {
             d.StopDrunk()
