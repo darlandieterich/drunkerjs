@@ -10,13 +10,13 @@
             height:150px;
         }
         .actions {
-            font-size: 50px;
+            font-size: 40px;
             margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h2>PUB Drunker</h2>
+    <h1>DrunkerJS</h2>
     <button class="actions" id="start">Start</button>
     <button class="actions" id="stop">Stop</button>
     <div>
@@ -39,12 +39,12 @@
         
         document.getElementById('start').onclick = function() {
             dBlur.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
-                speed: Drunker.DrunkerSpeed.SLOW
+                type: Drunker.DrunkerType.MODERATE, 
+                speed: Drunker.DrunkerSpeed.NORMAL
             });
             dDizzy.Drunk({
                 type: Drunker.DrunkerType.UNTILDROP, 
-                speed: Drunker.DrunkerSpeed.NORMAL
+                speed: Drunker.DrunkerSpeed.SLOW
             });
             dDisappear.Drunk({
                 type: Drunker.DrunkerType.UNTILDROP, 
