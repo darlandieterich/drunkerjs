@@ -162,9 +162,8 @@ class Effects{
 	_Pulse(options = {}) {
 		console.log('Pulse..init');
 		let fps = this.helper.getSpeed(options.speed);
-		let rd = 2;
-		let rand = this.helper.random(rd, false);
-		let scale = 'scale('+ (rand+1) +')';
+		let zoom = false;
+		let scale = 'scale(1)';
 		this.element.style.transform = scale;
 		this.element.style.WebkitTransform = scale;
 		let transition = (fps / 1000)+'s';
@@ -173,9 +172,9 @@ class Effects{
 
 		if (options.type) {
 			if (options.type == "UntilDrop") {
-				this.interval = setInterval(function () {
-					rand = this.helper.random(rd, false);
-					scale = 'scale('+ (rand+1) +')';
+				this.interval = setInterval(function () {					
+					scale = 'scale('+ (zoom ? '1.0' : '1.5' ) +')';
+					zoom = !zoom;
 					this.element.style.transform = scale;
 					this.element.style.WebkitTransform = scale;
 				}.bind(this), fps);

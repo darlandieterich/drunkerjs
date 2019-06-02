@@ -404,9 +404,8 @@ var Effects = function () {
 
 			console.log('Pulse..init');
 			var fps = this.helper.getSpeed(options.speed);
-			var rd = 2;
-			var rand = this.helper.random(rd, false);
-			var scale = 'scale(' + (rand + 1) + ')';
+			var zoom = false;
+			var scale = 'scale(1)';
 			this.element.style.transform = scale;
 			this.element.style.WebkitTransform = scale;
 			var transition = fps / 1000 + 's';
@@ -416,8 +415,8 @@ var Effects = function () {
 			if (options.type) {
 				if (options.type == "UntilDrop") {
 					this.interval = setInterval(function () {
-						rand = this.helper.random(rd, false);
-						scale = 'scale(' + (rand + 1) + ')';
+						scale = 'scale(' + (zoom ? '1.0' : '1.5') + ')';
+						zoom = !zoom;
 						this.element.style.transform = scale;
 						this.element.style.WebkitTransform = scale;
 					}.bind(this), fps);

@@ -3,20 +3,73 @@
 <head>
     <meta charset="UTF-8">    
     <title>Test Drunker</title>
+    <style>
+        .target {
+            width:150px;
+            float:left;
+            height:150px;
+        }
+        .actions {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Test</h2>
-    <div id="target" style="width:150px;height:150px;background-color:blue">the test</div>
-    <button id="reset">Reset</button>
+    <h2>PUB Drunker</h2>
+    <button class="actions" id="start">Start</button>
+    <button class="actions" id="stop">Stop</button>
+    <div>
+        <div id="targetBlur" class="target" style="background-color:blue">the Blur</div>
+        <div id="targetDizzy" class="target" style="background-color:aquamarine">the Dizzy</div>
+        <div id="targetDisappear" class="target" style="background-color:purple">the Disappear</div>
+        <div id="targetShake" class="target" style="background-color:orange">the Shake</div>
+        <div id="targetSpin" class="target" style="background-color:red">the Spin</div>
+        <div id="targetPulse" class="target" style="background-color:seagreen">the Pulse</div>
+    </div>
+    
     <script src="../dist/drunker.js"></script>
     <script>
-        var d = new Drunker('#target', Drunker.DrunkerEffects.BLUR);
-        d.Drunk({
-            type: Drunker.DrunkerType.UNTILDROP, 
-            speed: Drunker.DrunkerSpeed.NORMAL
-        });
-        document.getElementById('reset').onclick = function() {
-            d.StopDrunk()
+        var dBlur = new Drunker('#targetBlur', Drunker.DrunkerEffects.BLUR);        
+        var dDizzy = new Drunker('#targetDizzy', Drunker.DrunkerEffects.DIZZY);        
+        var dDisappear = new Drunker('#targetDisappear', Drunker.DrunkerEffects.DISAPPEAR);        
+        var dShake = new Drunker('#targetShake', Drunker.DrunkerEffects.SHAKE);        
+        var dSpin = new Drunker('#targetSpin', Drunker.DrunkerEffects.SPIN);        
+        var dPulse = new Drunker('#targetPulse', Drunker.DrunkerEffects.PULSE);
+        
+        document.getElementById('start').onclick = function() {
+            dBlur.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.SLOW
+            });
+            dDizzy.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.NORMAL
+            });
+            dDisappear.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.NORMAL
+            });
+            dShake.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.FAST
+            });
+            dSpin.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.NORMAL
+            });
+            dPulse.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.FAST
+            });
+        }
+        document.getElementById('stop').onclick = function() {
+            dBlur.StopDrunk();
+            dDizzy.StopDrunk();
+            dDisappear.StopDrunk();
+            dShake.StopDrunk();
+            dSpin.StopDrunk();
+            dPulse.StopDrunk();
         }
     </script>
 </body>
