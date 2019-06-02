@@ -160,7 +160,33 @@ class Effects{
 	}
 	//Zoom in/out
 	_Pulse(options = {}) {
-		console.log('Pulse');
+		console.log('Pulse..init');
+		let fps = this.helper.getSpeed(options.speed);
+		let rd = 2;
+		let rand = this.helper.random(rd, false);
+		let scale = 'scale('+ (rand+1) +')';
+		this.element.style.transform = scale;
+		this.element.style.WebkitTransform = scale;
+		let transition = (fps / 1000)+'s';
+		this.element.style.WebkitTransition = transition;
+		this.element.style.transition = transition;
+
+		if (options.type) {
+			if (options.type == "UntilDrop") {
+				this.interval = setInterval(function () {
+					rand = this.helper.random(rd, false);
+					scale = 'scale('+ (rand+1) +')';
+					this.element.style.transform = scale;
+					this.element.style.WebkitTransform = scale;
+				}.bind(this), fps);
+			}
+		}
+
+		this.stop = function stop () {
+			this.element.style.transform = '';
+			this.element.style.WebkitTransform = '';
+			if (this.interval) { clearInterval(this.interval); }
+		}
 	}
 	// Effect random
 	Auto () {

@@ -402,7 +402,35 @@ var Effects = function () {
 		value: function _Pulse() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Pulse');
+			console.log('Pulse..init');
+			var fps = this.helper.getSpeed(options.speed);
+			var rd = 2;
+			var rand = this.helper.random(rd, false);
+			var scale = 'scale(' + (rand + 1) + ')';
+			this.element.style.transform = scale;
+			this.element.style.WebkitTransform = scale;
+			var transition = fps / 1000 + 's';
+			this.element.style.WebkitTransition = transition;
+			this.element.style.transition = transition;
+
+			if (options.type) {
+				if (options.type == "UntilDrop") {
+					this.interval = setInterval(function () {
+						rand = this.helper.random(rd, false);
+						scale = 'scale(' + (rand + 1) + ')';
+						this.element.style.transform = scale;
+						this.element.style.WebkitTransform = scale;
+					}.bind(this), fps);
+				}
+			}
+
+			this.stop = function stop() {
+				this.element.style.transform = '';
+				this.element.style.WebkitTransform = '';
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 		// Effect random
 
@@ -479,11 +507,11 @@ var Helper = function () {
                 case "Fast":
                     return 100;
                 case "Normal":
-                    return 500;
+                    return 600;
                 case "Slow":
-                    return 1000;
+                    return 1100;
                 default:
-                    return 500;
+                    return 600;
             }
         }
     }, {
