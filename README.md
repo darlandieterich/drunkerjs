@@ -5,7 +5,11 @@ Discover the effects of alcohol, see what it can do on your page.
 (in development)
 _________________
 
-## Example
+## Live Example
+[Sample](https://darlandieterich.github.io/drunker)
+
+## Code Example
+Simple Dizzy, recursive effect and speed normal.
 
 ```html
 <!DOCTYPE html>
