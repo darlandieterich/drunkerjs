@@ -331,8 +331,9 @@ var Effects = function () {
 
 			console.log('Shake..init');
 			var fps = this.helper.getSpeed(options.speed);
-			var rand = this.helper.random(15);
-			var translate = 'translate(' + rand + 'px,' + rand + 'px)';
+			var randX = this.helper.random(15);
+			var randY = this.helper.random(15);
+			var translate = 'translate(' + randX + 'px,' + randY + 'px)';
 			this.element.style.transform = translate;
 			this.element.style.WebkitTransform = translate;
 			var transition = fps / 1000 + 's ease-in-out';
@@ -342,8 +343,9 @@ var Effects = function () {
 			if (options.type) {
 				if (options.type == "UntilDrop") {
 					this.interval = setInterval(function () {
-						rand = this.helper.random(15);
-						translate = 'translate(' + rand + 'px,' + rand + 'px)';
+						randX = this.helper.random(15);
+						randY = this.helper.random(15);
+						translate = 'translate(' + randX + 'px,' + randY + 'px)';
 						this.element.style.transform = translate;
 						this.element.style.WebkitTransform = translate;
 					}.bind(this), fps);

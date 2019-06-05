@@ -103,8 +103,9 @@ class Effects{
     _Shake(options = {}) {
 		console.log('Shake..init');
 		let fps = this.helper.getSpeed(options.speed);
-		let rand = this.helper.random(15)
-		let translate = 'translate('+rand+'px,'+rand+'px)';
+		let randX = this.helper.random(15)
+		let randY = this.helper.random(15)
+		let translate = 'translate('+randX+'px,'+randY+'px)';
 		this.element.style.transform = translate;
 		this.element.style.WebkitTransform = translate;
 		let transition = (fps / 1000)+'s ease-in-out';
@@ -114,8 +115,9 @@ class Effects{
 		if (options.type) {
 			if (options.type == "UntilDrop"){
 				this.interval = setInterval(function () {
-					rand = this.helper.random(15);
-					translate = 'translate('+rand+'px,'+rand+'px)';
+					randX = this.helper.random(15)
+					randY = this.helper.random(15)
+					translate = 'translate('+randX+'px,'+randY+'px)';
 					this.element.style.transform = translate;
 					this.element.style.WebkitTransform = translate;
 				}.bind(this), fps);
