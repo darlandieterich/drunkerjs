@@ -80,9 +80,9 @@ class Effects{
 		let disappear = false;		
 		let opacity = '1.0';
 		let transition = 'opacity '+(fps / 1000)+'s';
-		this.element.style.opacity = opacity;
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
+		this.element.style.opacity = opacity;
 
 		if (options.type){
 			if (options.type == "UntilDrop"){
