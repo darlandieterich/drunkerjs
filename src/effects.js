@@ -28,7 +28,7 @@ class Effects{
 		this.element.style.WebkitFilter = filter;
 
 		if (options.type){
-			if (options.type == "UntilDrop"){
+			if (options.type == Drunker.DrunkerType.UNTILDROP){
 				this.interval = setInterval(function () {
 					let rand = this.helper.random(20, false);
 					let filter = 'blur('+rand+'px)';
@@ -57,7 +57,7 @@ class Effects{
 		this.element.style.WebkitTransform = transform;
 
 		if (options.type){
-			if (options.type == "UntilDrop"){
+			if (options.type == Drunker.DrunkerType.UNTILDROP){
 				this.interval = setInterval(function () {
 					rand = this.helper.random(15);
 					transform = 'skewX(' + rand + 'deg)';
@@ -85,7 +85,7 @@ class Effects{
 		this.element.style.opacity = opacity;
 
 		if (options.type){
-			if (options.type == "UntilDrop"){
+			if (options.type == Drunker.DrunkerType.UNTILDROP){
 				this.interval = setInterval(function () {
 					opacity = disappear ? '1.0' : '0.0';
 					this.element.style.opacity = opacity;
@@ -113,7 +113,7 @@ class Effects{
 		this.element.style.transition = transition;
 
 		if (options.type) {
-			if (options.type == "UntilDrop"){
+			if (options.type == Drunker.DrunkerType.UNTILDROP){
 				this.interval = setInterval(function () {
 					randX = this.helper.random(15)
 					randY = this.helper.random(15)
@@ -144,7 +144,7 @@ class Effects{
 		this.element.style.transition = transition;
 
 		if (options.type) {
-			if (options.type == "UntilDrop") {
+			if (options.type == Drunker.DrunkerType.UNTILDROP) {
 				this.interval = setInterval(function () {
 					rand = this.helper.random(deg);
 					rotate = 'rotate('+ rand +'deg)';
@@ -173,7 +173,7 @@ class Effects{
 		this.element.style.transition = transition;
 
 		if (options.type) {
-			if (options.type == "UntilDrop") {
+			if (options.type == Drunker.DrunkerType.UNTILDROP) {
 				this.interval = setInterval(function () {					
 					scale = 'scale('+ (zoom ? '1.0' : '1.5' ) +')';
 					zoom = !zoom;
