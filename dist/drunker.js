@@ -235,7 +235,7 @@ var Effects = function () {
 			this.element.style.WebkitFilter = filter;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						var rand = this.helper.random(20, false);
 						var filter = 'blur(' + rand + 'px)';
@@ -271,7 +271,7 @@ var Effects = function () {
 			this.element.style.WebkitTransform = transform;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						rand = this.helper.random(15);
 						transform = 'skewX(' + rand + 'deg)';
@@ -301,12 +301,12 @@ var Effects = function () {
 			var disappear = false;
 			var opacity = '1.0';
 			var transition = 'opacity ' + fps / 1000 + 's';
-			this.element.style.opacity = opacity;
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
+			this.element.style.opacity = opacity;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						opacity = disappear ? '1.0' : '0.0';
 						this.element.style.opacity = opacity;
@@ -341,7 +341,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						randX = this.helper.random(15);
 						randY = this.helper.random(15);
@@ -379,7 +379,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						rand = this.helper.random(deg);
 						rotate = 'rotate(' + rand + 'deg)';
@@ -415,7 +415,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == "UntilDrop") {
+				if (options.type == Drunker.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						scale = 'scale(' + (zoom ? '1.0' : '1.5') + ')';
 						zoom = !zoom;
@@ -453,10 +453,6 @@ module.exports = Effects;
 
 "use strict";
 
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -525,7 +521,7 @@ var Helper = function () {
     return Helper;
 }();
 
-exports.default = Helper;
+module.exports = Helper;
 
 /***/ })
 /******/ ]);
