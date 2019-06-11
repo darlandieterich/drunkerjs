@@ -1,4 +1,4 @@
-export default class Helper {
+class Helper {
     addCSSRule(rule, name) {
         if (checkExistCSSRule(name) == null) {     
             document.styleSheets[0].insertRule(rule);
@@ -42,3 +42,5 @@ export default class Helper {
         return Object.getOwnPropertyNames(obj)
     }
 }
+
+module.exports = Helper;
