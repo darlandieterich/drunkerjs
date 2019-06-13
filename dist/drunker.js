@@ -514,7 +514,19 @@ var Helper = function () {
     }, {
         key: "getPropNames",
         value: function getPropNames(object) {
-            return Object.getOwnPropertyNames(obj);
+            return Object.getOwnPropertyNames(object);
+        }
+    }, {
+        key: "getRandomElements",
+        value: function getRandomElements(element) {
+            var all = document.querySelectorAll(element);
+            if (all[0]) {
+                var rand = all[0].children[this.random(all[0].children.length)];
+                console.log(rand);
+                return rand;
+            } else {
+                return document.body;
+            }
         }
     }]);
 

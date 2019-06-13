@@ -1,11 +1,11 @@
 class Helper {
     addCSSRule(rule, name) {
-        if (checkExistCSSRule(name) == null) {     
+        if (checkExistCSSRule(name) == null) {
             document.styleSheets[0].insertRule(rule);
         }
     }
 
-    checkExistCSSRule(cssRuleName) {    
+    checkExistCSSRule(cssRuleName) {
         for (var pos=0; pos < document.styleSheets[0].cssRules.length; pos++) {
             var sheet = document.styleSheets[0].cssRules[pos];
             if (sheet.name == cssRuleName) {
@@ -39,7 +39,18 @@ class Helper {
     }
 
     getPropNames(object) {
-        return Object.getOwnPropertyNames(obj)
+        return Object.getOwnPropertyNames(object);
+    }
+
+    getRandomElements(element) {
+        var all = document.querySelectorAll(element);
+        if (all[0]) {
+            var rand = all[0].children[this.random(all[0].children.length)];
+            console.log(rand);
+            return rand;
+        } else {
+            return document.body;
+        }
     }
 }
 
