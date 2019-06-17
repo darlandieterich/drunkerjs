@@ -156,7 +156,8 @@ var DrunkerEffects = {
 	DISAPPEAR: "Disappear",
 	SHAKE: "Shake",
 	SPIN: "Spin",
-	PULSE: "Pulse"
+	PULSE: "Pulse",
+	AUTO: "Auto"
 };
 
 //Define velocity of effect
@@ -296,7 +297,7 @@ var Effects = function () {
 		value: function _Disappear() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-			console.log('Disappear.. init');
+			console.log('Disappear..init');
 			var fps = this.helper.getSpeed(options.speed);
 			var disappear = false;
 			var opacity = '1.0';
@@ -436,9 +437,19 @@ var Effects = function () {
 		// Effect random
 
 	}, {
-		key: 'Auto',
-		value: function Auto() {
-			console.log('Auto');
+		key: '_Auto',
+		value: function _Auto() {
+			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+			console.log('Auto..Init');
+			var effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
+			console.log('effectTypes');
+			var theEffect = effectTypes[this.helper.random(effectTypes.length - 1, false)];
+			console.log('theEffect', theEffect);
+			this.element = this.helper.getRandomElements(thi);
+			console.log('element', this.element);
+			this.effect = Drunker.DrunkerEffects[theEffect];
+			this.GetEffect(options);
 		}
 	}]);
 
@@ -522,7 +533,6 @@ var Helper = function () {
             var all = document.querySelectorAll(element);
             if (all[0]) {
                 var rand = all[0].children[this.random(all[0].children.length)];
-                console.log(rand);
                 return rand;
             } else {
                 return document.body;

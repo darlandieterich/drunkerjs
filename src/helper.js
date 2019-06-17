@@ -46,7 +46,6 @@ class Helper {
         var all = document.querySelectorAll(element);
         if (all[0]) {
             var rand = all[0].children[this.random(all[0].children.length)];
-            console.log(rand);
             return rand;
         } else {
             return document.body;

@@ -71,13 +71,13 @@ class Effects{
 			this.element.style.transform = '';
 			this.element.style.WebkitTransform = '';
 			if (this.interval) { clearInterval(this.interval); }
-		}		  
+		}
 	}
 	// Disappear the element
 	_Disappear(options = {}) {
-		console.log('Disappear.. init');
+		console.log('Disappear..init');
 		let fps = this.helper.getSpeed(options.speed);
-		let disappear = false;		
+		let disappear = false;
 		let opacity = '1.0';
 		let transition = 'opacity '+(fps / 1000)+'s';
 		this.element.style.WebkitTransition = transition;
@@ -174,7 +174,7 @@ class Effects{
 
 		if (options.type) {
 			if (options.type == Drunker.DrunkerType.UNTILDROP) {
-				this.interval = setInterval(function () {					
+				this.interval = setInterval(function () {
 					scale = 'scale('+ (zoom ? '1.0' : '1.5' ) +')';
 					zoom = !zoom;
 					this.element.style.transform = scale;
@@ -190,8 +190,16 @@ class Effects{
 		}
 	}
 	// Effect random
-	Auto () {
-		console.log('Auto');
+	_Auto (options = {}) {
+		console.log('Auto..Init');
+		let effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
+		console.log('effectTypes');
+		let theEffect = effectTypes[this.helper.random(effectTypes.length-1, false)];
+		console.log('theEffect', theEffect);
+		this.element = this.helper.getRandomElements(thi);
+		console.log('element', this.element);
+		this.effect = Drunker.DrunkerEffects[theEffect];
+		this.GetEffect(options);
 	}
 }
 

@@ -4,7 +4,7 @@ class Drunker extends Effects {
 	constructor(selector = "", effect = {}) {
 		super(selector, effect);
 	}
-	
+
 	Drunk(options = {}) {
 		super.GetEffect(options);
 	}
@@ -16,12 +16,13 @@ class Drunker extends Effects {
 
 //Type effects
 const DrunkerEffects = {
-	BLUR: "Blur", 
-	DIZZY: "Dizzy", 
-	DISAPPEAR: "Disappear", 
+	BLUR: "Blur",
+	DIZZY: "Dizzy",
+	DISAPPEAR: "Disappear",
 	SHAKE: "Shake",
 	SPIN: "Spin",
-	PULSE: "Pulse"
+	PULSE: "Pulse",
+	AUTO: "Auto"
 };
 
 //Define velocity of effect
