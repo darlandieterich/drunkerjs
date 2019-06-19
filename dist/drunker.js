@@ -201,8 +201,9 @@ var Effects = function () {
 		_classCallCheck(this, Effects);
 
 		this.helper = new _helper2.default();
-		this.element = this.helper.selectElement(selector);
+		this.selector = selector;
 		this.effect = effect;
+		this.element = {};
 		this.interval = {};
 		this.stop = {};
 	}
@@ -230,6 +231,7 @@ var Effects = function () {
 			var rand = this.helper.random(20, false);
 			var filter = 'blur(' + rand + 'px)';
 			var transition = fps / 1000 + 's';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 			this.element.style.filter = filter;
@@ -266,6 +268,7 @@ var Effects = function () {
 			var rand = this.helper.random(15);
 			var transform = 'skewX(' + rand + 'deg)';
 			var transition = fps / 1000 + 's';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 			this.element.style.transform = transform;
@@ -302,6 +305,7 @@ var Effects = function () {
 			var disappear = false;
 			var opacity = '1.0';
 			var transition = 'opacity ' + fps / 1000 + 's';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.WebkitTransition = transition;
 			this.element.style.transition = transition;
 			this.element.style.opacity = opacity;
@@ -335,6 +339,7 @@ var Effects = function () {
 			var randX = this.helper.random(15);
 			var randY = this.helper.random(15);
 			var translate = 'translate(' + randX + 'px,' + randY + 'px)';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.transform = translate;
 			this.element.style.WebkitTransform = translate;
 			var transition = fps / 1000 + 's ease-in-out';
@@ -373,6 +378,7 @@ var Effects = function () {
 			var deg = 180;
 			var rand = this.helper.random(deg);
 			var rotate = 'rotate(' + rand + 'deg)';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.transform = rotate;
 			this.element.style.WebkitTransform = rotate;
 			var transition = fps / 1000 + 's';
@@ -409,6 +415,7 @@ var Effects = function () {
 			var fps = this.helper.getSpeed(options.speed);
 			var zoom = false;
 			var scale = 'scale(1)';
+			this.element = this.helper.selectElement(this.selector);
 			this.element.style.transform = scale;
 			this.element.style.WebkitTransform = scale;
 			var transition = fps / 1000 + 's';
@@ -446,10 +453,15 @@ var Effects = function () {
 			console.log('effectTypes');
 			var theEffect = effectTypes[this.helper.random(effectTypes.length - 1, false)];
 			console.log('theEffect', theEffect);
-			this.element = this.helper.getRandomElements(thi);
+			this.element = this.helper.getRandomElements(this.selector);
 			console.log('element', this.element);
 			this.effect = Drunker.DrunkerEffects[theEffect];
 			this.GetEffect(options);
+			this.stop = function stop() {
+				if (this.interval) {
+					clearInterval(this.interval);
+				}
+			};
 		}
 	}]);
 

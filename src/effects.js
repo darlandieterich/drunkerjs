@@ -2,9 +2,10 @@ import Helper from "./helper.js";
 
 class Effects{
     constructor(selector, effect) {
-		this.helper = new Helper();
-		this.element = this.helper.selectElement(selector);
+		this.helper = new Helper();	
+		this.selector = selector;
 		this.effect   = effect;
+		this.element = {};
 		this.interval = {};
 		this.stop = {};
     }
@@ -22,6 +23,7 @@ class Effects{
 		let rand = this.helper.random(20, false);
 		let filter = 'blur('+rand+'px)';
 		let transition = (fps/1000) + 's';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
 		this.element.style.filter = filter;
@@ -51,6 +53,7 @@ class Effects{
 		let rand = this.helper.random(15);
 		let transform = 'skewX(' + rand + 'deg)';
 		let transition = (fps/1000) + 's';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
 		this.element.style.transform = transform;
@@ -80,6 +83,7 @@ class Effects{
 		let disappear = false;
 		let opacity = '1.0';
 		let transition = 'opacity '+(fps / 1000)+'s';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.WebkitTransition = transition;
 		this.element.style.transition = transition;
 		this.element.style.opacity = opacity;
@@ -106,6 +110,7 @@ class Effects{
 		let randX = this.helper.random(15)
 		let randY = this.helper.random(15)
 		let translate = 'translate('+randX+'px,'+randY+'px)';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.transform = translate;
 		this.element.style.WebkitTransform = translate;
 		let transition = (fps / 1000)+'s ease-in-out';
@@ -137,6 +142,7 @@ class Effects{
 		let deg = 180;
 		let rand = this.helper.random(deg);
 		let rotate = 'rotate('+ rand +'deg)';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.transform = rotate;
 		this.element.style.WebkitTransform = rotate;
 		let transition = (fps / 1000)+'s';
@@ -166,6 +172,7 @@ class Effects{
 		let fps = this.helper.getSpeed(options.speed);
 		let zoom = false;
 		let scale = 'scale(1)';
+		this.element = this.helper.selectElement(this.selector);
 		this.element.style.transform = scale;
 		this.element.style.WebkitTransform = scale;
 		let transition = (fps / 1000)+'s';
@@ -196,10 +203,13 @@ class Effects{
 		console.log('effectTypes');
 		let theEffect = effectTypes[this.helper.random(effectTypes.length-1, false)];
 		console.log('theEffect', theEffect);
-		this.element = this.helper.getRandomElements(thi);
+		this.element = this.helper.getRandomElements(this.selector);
 		console.log('element', this.element);
 		this.effect = Drunker.DrunkerEffects[theEffect];
 		this.GetEffect(options);
+		this.stop = function stop () {			
+			if (this.interval) { clearInterval(this.interval); }
+		}
 	}
 }
 
