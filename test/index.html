@@ -26,6 +26,7 @@
         <div id="targetShake" class="target" style="background-color:orange">the Shake</div>
         <div id="targetSpin" class="target" style="background-color:red">the Spin</div>
         <div id="targetPulse" class="target" style="background-color:seagreen">the Pulse</div>
+        <div id="targetAuto" class="target" style="background-color:yellow">the Auto</div>
     </div>
     
     <script src="../dist/drunker.js"></script>
@@ -36,6 +37,7 @@
         var dShake = new Drunker('#targetShake', Drunker.DrunkerEffects.SHAKE);        
         var dSpin = new Drunker('#targetSpin', Drunker.DrunkerEffects.SPIN);        
         var dPulse = new Drunker('#targetPulse', Drunker.DrunkerEffects.PULSE);
+        var dAuto = new Drunker('#targetAuto', Drunker.DrunkerEffects.AUTO);
         
         document.getElementById('start').onclick = function() {
             dBlur.Drunk({
@@ -62,6 +64,10 @@
                 type: Drunker.DrunkerType.UNTILDROP, 
                 speed: Drunker.DrunkerSpeed.FAST
             });
+            dAuto.Drunk({
+                type: Drunker.DrunkerType.UNTILDROP, 
+                speed: Drunker.DrunkerSpeed.FAST
+            });
         }
         document.getElementById('stop').onclick = function() {
             dBlur.StopDrunk();
@@ -70,6 +76,7 @@
             dShake.StopDrunk();
             dSpin.StopDrunk();
             dPulse.StopDrunk();
+            dAuto.StopDrunk();
         }
     </script>
 </body>
