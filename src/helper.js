@@ -27,11 +27,11 @@ class Helper {
 
     getSpeed(speed) {
         switch (speed) {
-			case "Fast":
+			case Drunker.DrunkerSpeed.FAST:
 				return 100
-			case "Normal":
+			case Drunker.DrunkerSpeed.NORMAL:
 				return 600
-			case "Slow":
+			case Drunker.DrunkerSpeed.SLOW:
 				return 1100
 			default:
 				return 600
