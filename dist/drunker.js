@@ -205,12 +205,13 @@ var Effects = function () {
 		this.effect = effect;
 		this.element = {};
 		this.interval = {};
-		this.stop = {};
+		this.stop = function () {};
 	}
 
 	_createClass(Effects, [{
 		key: 'GetEffect',
 		value: function GetEffect(options) {
+			this.stop();
 			return this['_' + this.effect](options);
 		}
 	}, {
@@ -457,11 +458,9 @@ var Effects = function () {
 			console.log('element', this.element);
 			this.effect = Drunker.DrunkerEffects[theEffect];
 			this.GetEffect(options);
-			this.stop = function stop() {
-				if (this.interval) {
-					clearInterval(this.interval);
-				}
-			};
+			/* this.stop = function stop () {			
+   	if (this.interval) { clearInterval(this.interval); }
+   } */
 		}
 	}]);
 

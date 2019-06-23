@@ -7,9 +7,10 @@ class Effects{
 		this.effect   = effect;
 		this.element = {};
 		this.interval = {};
-		this.stop = {};
+		this.stop = ()=>{};
     }
     GetEffect (options) {
+		this.stop();
         return this[`_${this.effect}`](options)
 	}
 	StopEffect() {
@@ -199,17 +200,17 @@ class Effects{
 	// Effect random
 	_Auto (options = {}) {
 		console.log('Auto..Init');
-		let effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
+		var effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
 		console.log('effectTypes');
-		let theEffect = effectTypes[this.helper.random(effectTypes.length-1, false)];
+		var theEffect = effectTypes[this.helper.random(effectTypes.length-1, false)];
 		console.log('theEffect', theEffect);
 		this.element = this.helper.getRandomElements(this.selector);
 		console.log('element', this.element);
 		this.effect = Drunker.DrunkerEffects[theEffect];
 		this.GetEffect(options);
-		this.stop = function stop () {			
+		/* this.stop = function stop () {			
 			if (this.interval) { clearInterval(this.interval); }
-		}
+		} */
 	}
 }
 
