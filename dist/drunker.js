@@ -451,16 +451,9 @@ var Effects = function () {
 
 			console.log('Auto..Init');
 			var effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
-			console.log('effectTypes');
 			var theEffect = effectTypes[this.helper.random(effectTypes.length - 1, false)];
-			console.log('theEffect', theEffect);
-			this.element = this.helper.getRandomElements(this.selector);
-			console.log('element', this.element);
-			this.effect = Drunker.DrunkerEffects[theEffect];
-			this.GetEffect(options);
-			/* this.stop = function stop () {			
-   	if (this.interval) { clearInterval(this.interval); }
-   } */
+			var effect = Drunker.DrunkerEffects[theEffect];
+			this['_' + effect](options);
 		}
 	}]);
 
