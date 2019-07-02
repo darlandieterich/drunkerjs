@@ -1,7 +1,6 @@
 ok-Add webkit support
 ok-Implement Stop Effect
 ok-Add method skirmish x,y random positions the element in document
+ok-Implement Auto Effect
 -Restructure the class for generic functions
--Add constant in Helper
--Implement Auto Effect
 -Add all examples
