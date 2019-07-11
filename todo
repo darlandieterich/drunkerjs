@@ -4,3 +4,4 @@ ok-Add method skirmish x,y random positions the element in document
 ok-Implement Auto Effect
 -Restructure the class for generic functions
 -Add all examples
+-Publish in NPM repository
