@@ -2,6 +2,6 @@ ok-Add webkit support
 ok-Implement Stop Effect
 ok-Add method skirmish x,y random positions the element in document
 ok-Implement Auto Effect
+ok-Add all examples
 -Restructure the class for generic functions
--Add all examples
 -Publish in NPM repository
