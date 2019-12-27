@@ -37,8 +37,8 @@ Simple Dizzy, recursive effect and speed normal.
 </html>
 ```
 
-##Properties
-###Effects
+## Properties
+### Effects
 ```javascript
     //Enums
     Drunker.DrunkerEffects.BLUR
@@ -50,7 +50,7 @@ Simple Dizzy, recursive effect and speed normal.
     Drunker.DrunkerEffects.AUTO //Random effect
 ```
 
-###Speed
+### Speed
 ```javascript
     //Enum
     Drunker.DrunkerSpeed.FAST
@@ -58,7 +58,7 @@ Simple Dizzy, recursive effect and speed normal.
     Drunker.DrunkerSpeed.SLOW
 ```
 
-###Types
+### Types
 ```javascript
     //Enum
     Drunker.DrunkerType.MODERATE //One time
