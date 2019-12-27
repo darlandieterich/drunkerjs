@@ -36,3 +36,31 @@ Simple Dizzy, recursive effect and speed normal.
 </body>
 </html>
 ```
+
+##Properties
+###Effects
+```javascript
+    //Enums
+    Drunker.DrunkerEffects.BLUR
+    Drunker.DrunkerEffects.DIZZY
+    Drunker.DrunkerEffects.DISAPPEAR
+    Drunker.DrunkerEffects.SHAKE
+    Drunker.DrunkerEffects.SPIN
+    Drunker.DrunkerEffects.PULSE
+    Drunker.DrunkerEffects.AUTO //Random effect
+```
+
+###Speed
+```javascript
+    //Enum
+    Drunker.DrunkerSpeed.FAST
+    Drunker.DrunkerSpeed.NORMAL
+    Drunker.DrunkerSpeed.SLOW
+```
+
+###Types
+```javascript
+    //Enum
+    Drunker.DrunkerType.MODERATE //One time
+    Drunker.DrunkerType.UNTILDROP //Recursive mode
+```
