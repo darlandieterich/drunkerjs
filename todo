@@ -3,5 +3,5 @@ ok-Implement Stop Effect
 ok-Add method skirmish x,y random positions the element in document
 ok-Implement Auto Effect
 ok-Add all examples
+ok-Publish in NPM repository
 -Restructure the class for generic functions
--Publish in NPM repository
