@@ -9,16 +9,23 @@ const banner = `DrunkerJS v${pkg.version}`;
 
 module.exports = {
     entry: [
-        './src/drunker.js',
-        'webpack-dev-server/client?http://0.0.0.0:8080'
+        './src/drunker.js'
     ],
     mode: 'production',
     output: {
         filename: production ? 'drunker.min.js' : 'drunker.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/test',
         library: 'Drunker',
         libraryTarget: 'umd',
         globalObject: 'this'
+    },
+    devServer: {
+        before: function(app, server) {
+          app.get('/', function(req, res) {
+            res.redirect('/test'); // here you can try any of the Express JS res options mentioned in the answer below:
+          });
+        }
     },
     module: {
         rules: [
