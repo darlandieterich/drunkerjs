@@ -8,7 +8,10 @@ const production = process.env.NODE_ENV === 'production' || false;
 const banner = `DrunkerJS v${pkg.version}`;
 
 module.exports = {
-    entry: './src/drunker.js',
+    entry: [
+        './src/drunker.js',
+        'webpack-dev-server/client?http://0.0.0.0:8080'
+    ],
     mode: 'production',
     output: {
         filename: production ? 'drunker.min.js' : 'drunker.js',
