@@ -2,7 +2,7 @@
   "name": "drunkerjs",
   "version": "1.0.1",
   "description": "discover the effects of alcohol, see what it can do on your page.",
-  "main": "dist/drunker.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0 --port 8080",
     "build": "npm run build-debug && npm run build-min",
