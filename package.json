@@ -1,6 +1,6 @@
 {
   "name": "drunkerjs",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "discover the effects of alcohol, see what it can do on your page.",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,7 @@
     "build-debug": "webpack",
     "build-min": "cross-env NODE_ENV=production webpack",
     "build-watch": "webpack --watch",
-    "test": "karma start --single-run",
-    "prepublish": "npm run build"
+    "publish": "npm run build && npm publish"
   },
   "repository": "darlandieterich/drunkerjs",
   "keywords": [
@@ -29,12 +28,6 @@
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
-    "karma": "^3.1.1",
-    "karma-chai": "^0.1.0",
-    "karma-mocha": "^1.2.0",
-    "karma-phantomjs-launcher": "^1.0.0",
-    "karma-sinon": "^1.0.4",
-    "karma-webpack": "^3.0.5",
     "mocha": "^5.2.0",
     "phantomjs-prebuilt": "^2.1.4",
     "sinon": "^7.1.1",

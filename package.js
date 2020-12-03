@@ -1,10 +1,11 @@
-Package.describe({
+/* Package.describe({
   name: "darlandieterich:drunkerjs",
   summary: "Discover the effects of alcohol, see what it can do on your page.",
-  version: "0.0.1",
+  version: "0.1.4",
   git: "https://github.com/darlandieterich/drunkerjs"
 });
 
 Package.onUse(function(api) {
-  api.addFiles("dist/drunker.js", "client");
+  api.addFiles("dist/drunker.min.js", "client");
 });
+ */

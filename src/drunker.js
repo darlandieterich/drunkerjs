@@ -15,7 +15,7 @@ class Drunker extends Effects {
 };
 
 //Type effects
-const DrunkerEffects = {
+export const DrunkerEffects = {
 	BLUR: "Blur",
 	DIZZY: "Dizzy",
 	DISAPPEAR: "Disappear",
@@ -26,14 +26,14 @@ const DrunkerEffects = {
 };
 
 //Define velocity of effect
-const DrunkerSpeed = {
+export const DrunkerSpeed = {
 	SLOW: "Slow",
 	NORMAL: "Normal",
 	FAST: "Fast"
 }
 
 //Define the type of Drunker
-const DrunkerType = {
+export const DrunkerType = {
 	MODERATE: "Moderate",  //One time
 	UNTILDROP: "UntilDrop" //Recursive mode
 }

@@ -1,4 +1,4 @@
-/*! DrunkerJS v1.0.1 */
+/*! DrunkerJS v1.0.4 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -109,6 +109,11 @@ module.exports = __webpack_require__(1);
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.DrunkerType = exports.DrunkerSpeed = exports.DrunkerEffects = undefined;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -157,7 +162,7 @@ var Drunker = function (_Effects) {
 ;
 
 //Type effects
-var DrunkerEffects = {
+var DrunkerEffects = exports.DrunkerEffects = {
 	BLUR: "Blur",
 	DIZZY: "Dizzy",
 	DISAPPEAR: "Disappear",
@@ -168,13 +173,13 @@ var DrunkerEffects = {
 };
 
 //Define velocity of effect
-var DrunkerSpeed = {
+var DrunkerSpeed = exports.DrunkerSpeed = {
 	SLOW: "Slow",
 	NORMAL: "Normal",
 	FAST: "Fast"
 
 	//Define the type of Drunker
-};var DrunkerType = {
+};var DrunkerType = exports.DrunkerType = {
 	MODERATE: "Moderate", //One time
 	UNTILDROP: "UntilDrop" //Recursive mode
 
