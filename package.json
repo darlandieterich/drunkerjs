@@ -1,6 +1,6 @@
 {
   "name": "drunkerjs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "discover the effects of alcohol, see what it can do on your page.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build-debug": "webpack",
     "build-min": "cross-env NODE_ENV=production webpack",
     "build-watch": "webpack --watch",
-    "publish": "npm run build && npm publish"
+    "publish": "npm publish"
   },
   "repository": "darlandieterich/drunkerjs",
   "keywords": [

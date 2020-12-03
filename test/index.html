@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <title>Test Drunker</title>
     <style>
         .target {
@@ -28,44 +28,44 @@
         <div id="targetPulse" class="target" style="background-color:seagreen">the Pulse</div>
         <div id="targetAuto" class="target" style="background-color:yellow">the Auto</div>
     </div>
-    
+
     <script src="../dist/drunker.js"></script>
     <script>
-        var dBlur = new Drunker('#targetBlur', Drunker.DrunkerEffects.BLUR);        
-        var dDizzy = new Drunker('#targetDizzy', Drunker.DrunkerEffects.DIZZY);        
-        var dDisappear = new Drunker('#targetDisappear', Drunker.DrunkerEffects.DISAPPEAR);        
-        var dShake = new Drunker('#targetShake', Drunker.DrunkerEffects.SHAKE);        
-        var dSpin = new Drunker('#targetSpin', Drunker.DrunkerEffects.SPIN);        
+        var dBlur = new Drunker('#targetBlur', Drunker.DrunkerEffects.BLUR);
+        var dDizzy = new Drunker('#targetDizzy', Drunker.DrunkerEffects.DIZZY);
+        var dDisappear = new Drunker('#targetDisappear', Drunker.DrunkerEffects.DISAPPEAR);
+        var dShake = new Drunker('#targetShake', Drunker.DrunkerEffects.SHAKE);
+        var dSpin = new Drunker('#targetSpin', Drunker.DrunkerEffects.SPIN);
         var dPulse = new Drunker('#targetPulse', Drunker.DrunkerEffects.PULSE);
         var dAuto = new Drunker('#targetAuto', Drunker.DrunkerEffects.AUTO);
-        
+
         document.getElementById('start').onclick = function() {
             dBlur.Drunk({
-                type: Drunker.DrunkerType.MODERATE, 
+                type: Drunker.DrunkerType.MODERATE,
                 speed: Drunker.DrunkerSpeed.NORMAL
             });
             dDizzy.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.SLOW
             });
             dDisappear.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.NORMAL
             });
             dShake.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.FAST
             });
             dSpin.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.NORMAL
             });
             dPulse.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.FAST
             });
             dAuto.Drunk({
-                type: Drunker.DrunkerType.UNTILDROP, 
+                type: Drunker.DrunkerType.UNTILDROP,
                 speed: Drunker.DrunkerSpeed.FAST
             });
         }

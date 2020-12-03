@@ -1,1 +1,1 @@
-module.exports = require('./dist/drunker.min.js')
+module.exports = require('./dist/drunker.js')
