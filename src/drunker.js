@@ -1,4 +1,4 @@
-import Effects from "./effects.js";
+export const Effects = require("./effects.js");
 
 class Drunker extends Effects {
 	constructor(selector = "", effect = {}) {
