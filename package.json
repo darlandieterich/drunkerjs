@@ -1,6 +1,6 @@
 {
   "name": "drunkerjs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "discover the effects of alcohol, see what it can do on your page.",
   "main": "index.js",
   "scripts": {

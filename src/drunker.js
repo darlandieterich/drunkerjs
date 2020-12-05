@@ -1,4 +1,5 @@
-export const Effects = require("./effects.js");
+import Effects from "./effects.js";
+import {DrunkerType, DrunkerEffects, DrunkerSpeed} from "./enums"
 
 class Drunker extends Effects {
 	constructor(selector = "", effect = {}) {
@@ -13,30 +14,6 @@ class Drunker extends Effects {
 		super.StopEffect();
 	}
 };
-
-//Type effects
-export const DrunkerEffects = {
-	BLUR: "Blur",
-	DIZZY: "Dizzy",
-	DISAPPEAR: "Disappear",
-	SHAKE: "Shake",
-	SPIN: "Spin",
-	PULSE: "Pulse",
-	AUTO: "Auto"
-};
-
-//Define velocity of effect
-export const DrunkerSpeed = {
-	SLOW: "Slow",
-	NORMAL: "Normal",
-	FAST: "Fast"
-}
-
-//Define the type of Drunker
-export const DrunkerType = {
-	MODERATE: "Moderate",  //One time
-	UNTILDROP: "UntilDrop" //Recursive mode
-}
 
 //Attach the enum to the class
 Drunker.DrunkerEffects = DrunkerEffects;

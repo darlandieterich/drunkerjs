@@ -92,18 +92,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(1);
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -112,18 +105,60 @@ module.exports = __webpack_require__(1);
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+//Type effects
+var DrunkerEffects = exports.DrunkerEffects = {
+	BLUR: "Blur",
+	DIZZY: "Dizzy",
+	DISAPPEAR: "Disappear",
+	SHAKE: "Shake",
+	SPIN: "Spin",
+	PULSE: "Pulse",
+	AUTO: "Auto"
+};
+
+//Define velocity of effect
+var DrunkerSpeed = exports.DrunkerSpeed = {
+	SLOW: "Slow",
+	NORMAL: "Normal",
+	FAST: "Fast"
+
+	//Define the type of Drunker
+};var DrunkerType = exports.DrunkerType = {
+	MODERATE: "Moderate", //One time
+	UNTILDROP: "UntilDrop" //Recursive mode
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _effects = __webpack_require__(3);
+
+var _effects2 = _interopRequireDefault(_effects);
+
+var _enums = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Effects = exports.Effects = __webpack_require__(2);
 
 var Drunker = function (_Effects) {
 	_inherits(Drunker, _Effects);
@@ -152,42 +187,19 @@ var Drunker = function (_Effects) {
 	}]);
 
 	return Drunker;
-}(Effects);
+}(_effects2.default);
 
 ;
 
-//Type effects
-var DrunkerEffects = exports.DrunkerEffects = {
-	BLUR: "Blur",
-	DIZZY: "Dizzy",
-	DISAPPEAR: "Disappear",
-	SHAKE: "Shake",
-	SPIN: "Spin",
-	PULSE: "Pulse",
-	AUTO: "Auto"
-};
-
-//Define velocity of effect
-var DrunkerSpeed = exports.DrunkerSpeed = {
-	SLOW: "Slow",
-	NORMAL: "Normal",
-	FAST: "Fast"
-
-	//Define the type of Drunker
-};var DrunkerType = exports.DrunkerType = {
-	MODERATE: "Moderate", //One time
-	UNTILDROP: "UntilDrop" //Recursive mode
-
-
-	//Attach the enum to the class
-};Drunker.DrunkerEffects = DrunkerEffects;
-Drunker.DrunkerSpeed = DrunkerSpeed;
-Drunker.DrunkerType = DrunkerType;
+//Attach the enum to the class
+Drunker.DrunkerEffects = _enums.DrunkerEffects;
+Drunker.DrunkerSpeed = _enums.DrunkerSpeed;
+Drunker.DrunkerType = _enums.DrunkerType;
 
 module.exports = Drunker;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -195,9 +207,11 @@ module.exports = Drunker;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _helper = __webpack_require__(3);
+var _helper = __webpack_require__(4);
 
 var _helper2 = _interopRequireDefault(_helper);
+
+var _enums = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -216,20 +230,20 @@ var Effects = function () {
 	}
 
 	_createClass(Effects, [{
-		key: 'GetEffect',
+		key: "GetEffect",
 		value: function GetEffect(options) {
 			this.stop();
-			return this['_' + this.effect](options);
+			return this["_" + this.effect](options);
 		}
 	}, {
-		key: 'StopEffect',
+		key: "StopEffect",
 		value: function StopEffect() {
 			this.stop();
 		}
 		// Blurred effect
 
 	}, {
-		key: '_Blur',
+		key: "_Blur",
 		value: function _Blur() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -246,7 +260,7 @@ var Effects = function () {
 			this.element.style.WebkitFilter = filter;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						var rand = this.helper.random(20, false);
 						var filter = 'blur(' + rand + 'px)';
@@ -267,7 +281,7 @@ var Effects = function () {
 		// Dizzy effect
 
 	}, {
-		key: '_Dizzy',
+		key: "_Dizzy",
 		value: function _Dizzy() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -283,7 +297,7 @@ var Effects = function () {
 			this.element.style.WebkitTransform = transform;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						rand = this.helper.random(15);
 						transform = 'skewX(' + rand + 'deg)';
@@ -304,7 +318,7 @@ var Effects = function () {
 		// Disappear the element
 
 	}, {
-		key: '_Disappear',
+		key: "_Disappear",
 		value: function _Disappear() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -319,7 +333,7 @@ var Effects = function () {
 			this.element.style.opacity = opacity;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						opacity = disappear ? '1.0' : '0.0';
 						this.element.style.opacity = opacity;
@@ -338,7 +352,7 @@ var Effects = function () {
 		// Shake effect
 
 	}, {
-		key: '_Shake',
+		key: "_Shake",
 		value: function _Shake() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -355,7 +369,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						randX = this.helper.random(15);
 						randY = this.helper.random(15);
@@ -377,7 +391,7 @@ var Effects = function () {
 		// Rotation effect
 
 	}, {
-		key: '_Spin',
+		key: "_Spin",
 		value: function _Spin() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -394,7 +408,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						rand = this.helper.random(deg);
 						rotate = 'rotate(' + rand + 'deg)';
@@ -415,7 +429,7 @@ var Effects = function () {
 		//Zoom in/out
 
 	}, {
-		key: '_Pulse',
+		key: "_Pulse",
 		value: function _Pulse() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -431,7 +445,7 @@ var Effects = function () {
 			this.element.style.transition = transition;
 
 			if (options.type) {
-				if (options.type == Drunker.DrunkerType.UNTILDROP) {
+				if (options.type == _enums.DrunkerType.UNTILDROP) {
 					this.interval = setInterval(function () {
 						scale = 'scale(' + (zoom ? '1.0' : '1.5') + ')';
 						zoom = !zoom;
@@ -452,15 +466,15 @@ var Effects = function () {
 		// Effect random
 
 	}, {
-		key: '_Auto',
+		key: "_Auto",
 		value: function _Auto() {
 			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 			console.log('Auto..Init');
-			var effectTypes = Object.getOwnPropertyNames(Drunker.DrunkerEffects);
+			var effectTypes = Object.getOwnPropertyNames(_enums.DrunkerEffects);
 			var theEffect = effectTypes[this.helper.random(effectTypes.length - 1, false)];
-			var effect = Drunker.DrunkerEffects[theEffect];
-			this['_' + effect](options);
+			var effect = _enums.DrunkerEffects[theEffect];
+			this["_" + effect](options);
 		}
 	}]);
 
@@ -470,13 +484,15 @@ var Effects = function () {
 module.exports = Effects;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _enums = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -523,11 +539,11 @@ var Helper = function () {
         key: "getSpeed",
         value: function getSpeed(speed) {
             switch (speed) {
-                case Drunker.DrunkerSpeed.FAST:
+                case _enums.DrunkerSpeed.FAST:
                     return 100;
-                case Drunker.DrunkerSpeed.NORMAL:
+                case _enums.DrunkerSpeed.NORMAL:
                     return 600;
-                case Drunker.DrunkerSpeed.SLOW:
+                case _enums.DrunkerSpeed.SLOW:
                     return 1100;
                 default:
                     return 600;

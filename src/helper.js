@@ -1,3 +1,4 @@
+import {DrunkerSpeed} from "./enums"
 class Helper {
     addCSSRule(rule, name) {
         if (checkExistCSSRule(name) == null) {
@@ -27,11 +28,11 @@ class Helper {
 
     getSpeed(speed) {
         switch (speed) {
-			case Drunker.DrunkerSpeed.FAST:
+			case DrunkerSpeed.FAST:
 				return 100
-			case Drunker.DrunkerSpeed.NORMAL:
+			case DrunkerSpeed.NORMAL:
 				return 600
-			case Drunker.DrunkerSpeed.SLOW:
+			case DrunkerSpeed.SLOW:
 				return 1100
 			default:
 				return 600
